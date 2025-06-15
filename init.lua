@@ -119,7 +119,7 @@ vim.keymap.set('n', '<C-;>', '<C-w><C-;>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the upper window' })
 
-vim.keymap.set('i', '<M-BS>', '<C-w>', { desc = 'Delete previous word', noremap = true })
+vim.keymap.set({ 'i', 'c' }, '<M-BS>', '<C-w>', { desc = 'Delete previous word', noremap = true })
 vim.keymap.set('', '<C-s>', ':w<CR>', { desc = 'Save file', noremap = true })
 
 -- Clear highlights on search when pressing <Esc> in normal mode
