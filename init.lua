@@ -831,6 +831,14 @@ require('lazy').setup({
       require('ayu').setup {
         overrides = {
           Normal = { bg = 'None' },
+          NormalFloat = { bg = 'none' },
+          ColorColumn = { bg = 'None' },
+          SignColumn = { bg = 'None' },
+          Folded = { bg = 'None' },
+          FoldColumn = { bg = 'None' },
+          CursorLine = { bg = 'None' },
+          CursorColumn = { bg = 'None' },
+          VertSplit = { bg = 'None' },
         },
       }
       local file = io.open(vim.fn.expand '~/.config/theme', 'r')
