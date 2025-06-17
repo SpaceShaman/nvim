@@ -15,6 +15,11 @@ return function()
   map('n', '<A-l>', '<C-w><Up>', { desc = 'Move focus to the upper window', noremap = true })
   map('n', '<A-;>', '<C-w><Right>', { desc = 'Move focus to the right window', noremap = true })
 
+  map('n', '<A-a>', '<C-w><LT>', { desc = 'Decrease window width', noremap = true })
+  map('n', '<A-s>', '<C-w>-', { desc = 'Decrease window height', noremap = true })
+  map('n', '<A-d>', '<C-w>+', { desc = 'Increase window height', noremap = true })
+  map('n', '<A-f>', '<C-w>>', { desc = 'Increase window width', noremap = true })
+
   map({ 'i', 'c' }, '<M-BS>', '<C-w>', { desc = 'Delete previous word', noremap = true })
 
   map('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear highlights on search when pressing <Esc>' })
