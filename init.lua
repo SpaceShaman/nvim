@@ -114,10 +114,10 @@ vim.keymap.set('', 'K', '5j', { noremap = true })
 
 --  Use CTRL+<jkl;> to switch between windows
 --  See `:help wincmd` for a list of all window commands
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<C-;>', '<C-w><C-;>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the upper window' })
+vim.keymap.set('n', '<C-j>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+vim.keymap.set('n', '<C-;>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+vim.keymap.set('n', '<C-k>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+vim.keymap.set('n', '<C-l>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 vim.keymap.set({ 'i', 'c' }, '<M-BS>', '<C-w>', { desc = 'Delete previous word', noremap = true })
 vim.keymap.set('', '<C-s>', ':w<CR>', { desc = 'Save file', noremap = true })
@@ -831,14 +831,7 @@ require('lazy').setup({
       require('ayu').setup {
         overrides = {
           Normal = { bg = 'None' },
-          NormalFloat = { bg = 'none' },
-          ColorColumn = { bg = 'None' },
           SignColumn = { bg = 'None' },
-          Folded = { bg = 'None' },
-          FoldColumn = { bg = 'None' },
-          CursorLine = { bg = 'None' },
-          CursorColumn = { bg = 'None' },
-          VertSplit = { bg = 'None' },
         },
       }
       local file = io.open(vim.fn.expand '~/.config/theme', 'r')
@@ -929,10 +922,10 @@ require('lazy').setup({
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
   -- require 'kickstart.plugins.debug',
-  -- require 'kickstart.plugins.indent_line',
-  -- require 'kickstart.plugins.lint',
-  -- require 'kickstart.plugins.autopairs',
-  -- require 'kickstart.plugins.neo-tree',
+  require 'kickstart.plugins.indent_line',
+  require 'kickstart.plugins.lint',
+  require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
