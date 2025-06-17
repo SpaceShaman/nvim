@@ -26,10 +26,10 @@ If you experience any errors while trying to install kickstart, run `:checkhealt
 
 I hope you enjoy your Neovim journey,
 - TJ
-
 --]]
---  require('keymaps').setup()
-require('hjkl')()
+
+require('keymaps')()
+
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
