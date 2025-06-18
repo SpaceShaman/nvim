@@ -1,5 +1,3 @@
-require 'keymaps'()
-
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
@@ -9,6 +7,8 @@ vim.o.relativenumber = true
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
+
+require 'keymaps'()
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
