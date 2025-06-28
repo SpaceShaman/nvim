@@ -17,8 +17,8 @@ return {
       window = {
         mappings = {
           ['\\'] = 'close_window',
-          ['k'] = '<Down>',
-          ['l'] = '<Up>',
+          ['k'] = 'noop',
+          ['l'] = 'noop',
         },
       },
     },
