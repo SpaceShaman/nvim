@@ -3,8 +3,9 @@ return {
   version = '*',
   opts = {
     keymaps = {
-      accept_word = '<C-Right>',
+      accept_word = '<F13>',
       accept_suggestion = '<Tab>',
+      clear_suggestion = '<C-j>',
     },
   },
 }
