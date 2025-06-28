@@ -19,6 +19,8 @@ return {
           ['\\'] = 'close_window',
           ['k'] = 'noop',
           ['l'] = 'noop',
+          ['j'] = 'close_node',
+          [';'] = 'toggle_node',
         },
       },
     },
