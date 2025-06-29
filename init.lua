@@ -1,7 +1,5 @@
--- [[ Setting options ]]
--- See `:help vim.o`
--- NOTE: You can change these options as you wish!
---  For more options, you can see `:help option-list`
+-- See `:h vim.o`
+--  For more options, you can see `:h option-list`
 vim.o.number = true
 vim.o.relativenumber = true
 vim.g.mapleader = ' '
