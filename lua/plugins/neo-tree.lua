@@ -21,6 +21,7 @@ return {
           [';'] = 'toggle_node',
         },
         auto_expand_width = true,
+        width = 25,
       },
     },
   },
