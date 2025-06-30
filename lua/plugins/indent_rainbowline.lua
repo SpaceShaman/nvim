@@ -59,10 +59,10 @@ return {
       },
       whitespace = {
         highlight = highlight,
-        remove_blankline_trail = true,
+        remove_blankline_trail = false,
       },
       scope = {
-        enabled = false,
+        enabled = true,
       },
     }
   end,
