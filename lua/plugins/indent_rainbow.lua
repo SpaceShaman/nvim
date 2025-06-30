@@ -7,15 +7,17 @@ local function hex_to_rgb(hex)
   }
 end
 
-local function mix_colors(fg_hex, bg_hex, alpha)
+local function rgb_to_hex(rgb)
+  return string.format('#%02x%02x%02x', rgb[1], rgb[2], rgb[3])
+end
+
+local function mix_color_with_alpha(fg_hex, alpha)
   local fg = hex_to_rgb(fg_hex)
-  local bg = hex_to_rgb(bg_hex)
-
-  local function mix(c1, c2)
-    return math.floor(c1 * alpha + c2 * (1 - alpha))
+  local mixed = {}
+  for i = 1, 3 do
+    mixed[i] = math.floor(fg[i] * alpha + 0 * (1 - alpha))
   end
-
-  return string.format('#%02x%02x%02x', mix(fg[1], bg[1]), mix(fg[2], bg[2]), mix(fg[3], bg[3]))
+  return rgb_to_hex(mixed)
 end
 
 return {
@@ -23,8 +25,7 @@ return {
   main = 'ibl',
   config = function()
     local is_dark = vim.o.background == 'dark'
-    local bg_color = is_dark and '#000000' or '#ffffff'
-    local alpha = 0.1
+    local alpha = is_dark and 0.3 or 0.7
 
     local base_colors = {
       '#ffff40',
@@ -35,7 +36,7 @@ return {
 
     local colors = {}
     for _, base in ipairs(base_colors) do
-      table.insert(colors, mix_colors(base, bg_color, alpha))
+      table.insert(colors, mix_color_with_alpha(base, alpha))
     end
 
     local highlight = {}
@@ -47,7 +48,7 @@ return {
     hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
       for i, color in ipairs(colors) do
         vim.api.nvim_set_hl(0, highlight[i], {
-          bg = color,
+          fg = color,
           nocombine = true,
         })
       end
@@ -56,10 +57,7 @@ return {
     require('ibl').setup {
       indent = {
         char = '▏',
-      },
-      whitespace = {
         highlight = highlight,
-        remove_blankline_trail = false,
       },
       scope = {
         enabled = false,
