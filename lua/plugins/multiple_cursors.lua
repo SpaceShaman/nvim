@@ -3,11 +3,9 @@ return {
   lazy = false,
   init = function()
     vim.g.VM_theme = 'nord'
-    vim.g.VM_custom_motions = {
-      [';'] = 'l',
-      ['l'] = 'k',
-      ['k'] = 'j',
-      ['j'] = 'h',
-    }
+
+    vim.cmd [[
+  let g:VM_custom_motions = {'j': 'h', 'k': 'j', 'l': 'k', '<Right>': 'l'}
+]]
   end,
 }
