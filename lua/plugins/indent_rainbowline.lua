@@ -55,8 +55,7 @@ return {
 
     require('ibl').setup {
       indent = {
-        char = ' ',
-        highlight = highlight,
+        char = '▏',
       },
       whitespace = {
         highlight = highlight,
