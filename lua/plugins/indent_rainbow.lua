@@ -15,7 +15,7 @@ local function mix_color_with_alpha(fg_hex, alpha)
   local fg = hex_to_rgb(fg_hex)
   local mixed = {}
   for i = 1, 3 do
-    mixed[i] = math.floor(fg[i] * alpha + 0 * (1 - alpha))
+    mixed[i] = math.floor(fg[i] * alpha)
   end
   return rgb_to_hex(mixed)
 end
@@ -25,7 +25,7 @@ return {
   main = 'ibl',
   config = function()
     local is_dark = vim.o.background == 'dark'
-    local alpha = is_dark and 0.3 or 0.7
+    local alpha = is_dark and 0.2 or 0.9
 
     local base_colors = {
       '#ffff40',
