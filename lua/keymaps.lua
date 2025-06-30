@@ -5,10 +5,10 @@ return function()
   local opts = { noremap = true }
 
   map('', "'", ';', opts)
-  map('', 'j', '<Left>', opts)
-  map('', 'k', '<Down>', opts)
-  map('', 'l', '<Up>', opts)
-  map('', ';', '<Right>', opts)
+  map('', 'j', 'h', opts)
+  map('', 'k', 'j', opts)
+  map('', 'l', 'k', opts)
+  map('', ';', 'l', opts)
   map('', 'K', '5<Down>', opts)
   map('', 'L', '5<Up>', opts)
 
