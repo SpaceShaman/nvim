@@ -31,6 +31,5 @@ return function()
 
   map('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear highlights on search when pressing <Esc>' })
 
-  -- Find files
   map('', '<C-p>', '<Plug>(telescope-find-files)', { desc = 'Find files' })
 end
