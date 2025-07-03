@@ -29,7 +29,6 @@ return function()
   map('', '<C-p>', '<Plug>(telescope-find-files)', { desc = 'Find files' })
 
   -- Terminal
-  -- map('n', 't', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
   map('', '<A-t>', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
   map('t', '<A-t>', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
   map('t', '<Esc>', '<C-\\><C-n>', { desc = 'Return to normal mode' })
