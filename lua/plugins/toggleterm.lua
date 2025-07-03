@@ -7,6 +7,7 @@ return {
       autochdir = true,
       shell = 'fish',
       terminal_mappings = false,
+      insert_mappings = false,
     },
   },
 }
