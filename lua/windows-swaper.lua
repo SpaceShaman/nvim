@@ -1,5 +1,5 @@
 return function()
-  local function swap_or_move_buffer(direction)
+  local function move_window(direction)
     local cur_win = vim.api.nvim_get_current_win()
     local cur_buf = vim.api.nvim_win_get_buf(cur_win)
 
@@ -30,15 +30,15 @@ return function()
   end
 
   vim.keymap.set('n', '<leader>j', function()
-    swap_or_move_buffer 'h'
+    move_window 'h'
   end, { desc = 'Swap or move buffer left' })
   vim.keymap.set('n', '<leader>k', function()
-    swap_or_move_buffer 'j'
+    move_window 'j'
   end, { desc = 'Swap or move buffer down' })
   vim.keymap.set('n', '<leader>l', function()
-    swap_or_move_buffer 'k'
+    move_window 'k'
   end, { desc = 'Swap or move buffer up' })
   vim.keymap.set('n', '<leader>;', function()
-    swap_or_move_buffer 'l'
+    move_window 'l'
   end, { desc = 'Swap or move buffer right' })
 end
