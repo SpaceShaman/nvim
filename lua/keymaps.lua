@@ -32,4 +32,14 @@ return function()
   map('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear highlights on search when pressing <Esc>' })
 
   map('', '<C-p>', '<Plug>(telescope-find-files)', { desc = 'Find files' })
+
+  -- Terminal
+  map('n', 't', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
+  map('', '<A-t>', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
+  map('t', '<A-t>', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
+  map('t', '<Esc>', '<C-\\><C-n>', { desc = 'Return to normal mode' })
+  map('t', '<A-j>', '<Cmd>wincmd h<CR>', { desc = 'Go to the left window', noremap = true })
+  map('t', '<A-k>', '<Cmd>wincmd j<CR>', { desc = 'Go to the lower window', noremap = true })
+  map('t', '<A-l>', '<Cmd>wincmd k<CR>', { desc = 'Go to the upper window', noremap = true })
+  map('t', '<A-;>', '<Cmd>wincmd l<CR>', { desc = 'Go to the right window', noremap = true })
 end
