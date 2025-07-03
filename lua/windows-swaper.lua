@@ -17,22 +17,16 @@ return function()
       }
       vim.cmd(split_cmd[direction])
       target_win = vim.api.nvim_get_current_win()
-
-      -- Move buffer
+      -- -- Move buffer
       vim.api.nvim_win_set_buf(target_win, cur_buf)
-      -- Create new empty buffer in current window
-      vim.api.nvim_set_current_win(cur_win)
-      vim.cmd 'enew'
-      -- Switch to target window
-      vim.api.nvim_set_current_win(target_win)
     else
       -- Swap buffers
       local target_buf = vim.api.nvim_win_get_buf(target_win)
       vim.api.nvim_win_set_buf(target_win, cur_buf)
       vim.api.nvim_win_set_buf(cur_win, target_buf)
-      -- Switch to target window after swap
-      vim.api.nvim_set_current_win(target_win)
     end
+    -- Switch to target window after swap or move
+    vim.api.nvim_set_current_win(target_win)
   end
 
   vim.keymap.set('n', '<leader>j', function()
