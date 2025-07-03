@@ -1,6 +1,7 @@
 -- See `:h vim.o`
 --  For more options, you can see `:h option-list`
 require 'keymaps'()
+require 'windows-swaper'()
 
 vim.o.number = true
 vim.o.relativenumber = true
