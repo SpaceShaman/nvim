@@ -22,10 +22,10 @@ return function()
   map('n', '<Leader>l', '<C-w>K', { desc = 'Move window to far upper', noremap = true })
   map('n', '<Leader>;', '<C-w>L', { desc = 'Move window right', noremap = true })
 
-  map('n', '<A-a>', '<C-w><LT>', { desc = 'Decrease window width', noremap = true })
-  map('n', '<A-s>', '<C-w>-', { desc = 'Decrease window height', noremap = true })
-  map('n', '<A-d>', '<C-w>+', { desc = 'Increase window height', noremap = true })
-  map('n', '<A-f>', '<C-w>>', { desc = 'Increase window width', noremap = true })
+  map('n', '<A-a>', '<Cmd>vertical resize -2<CR>', { desc = 'Decrease window width', noremap = true })
+  map('n', '<A-s>', '<Cmd>horizontal resize -2<CR>', { desc = 'Decrease window height', noremap = true })
+  map('n', '<A-d>', '<Cmd>horizontal resize +2<CR>', { desc = 'Increase window height', noremap = true })
+  map('n', '<A-f>', '<Cmd>vertical resize +2<CR>', { desc = 'Increase window width', noremap = true })
 
   map({ 'i', 'c' }, '<M-BS>', '<C-w>', { desc = 'Delete previous word', noremap = true })
 
@@ -42,4 +42,8 @@ return function()
   map('t', '<A-k>', '<Cmd>wincmd j<CR>', { desc = 'Go to the lower window', noremap = true })
   map('t', '<A-l>', '<Cmd>wincmd k<CR>', { desc = 'Go to the upper window', noremap = true })
   map('t', '<A-;>', '<Cmd>wincmd l<CR>', { desc = 'Go to the right window', noremap = true })
+  map('t', '<A-a>', '<Cmd>vertical resize -2<CR>', { desc = 'Decrease window width', noremap = true })
+  map('t', '<A-s>', '<Cmd>horizontal resize -2<CR>', { desc = 'Decrease window height', noremap = true })
+  map('t', '<A-d>', '<Cmd>horizontal resize +2<CR>', { desc = 'Increase window height', noremap = true })
+  map('t', '<A-f>', '<Cmd>vertical resize +2<CR>', { desc = 'Increase window width', noremap = true })
 end
