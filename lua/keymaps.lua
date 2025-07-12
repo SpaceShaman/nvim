@@ -40,4 +40,10 @@ return function()
   map('t', '<A-s>', '<Cmd>horizontal resize -2<CR>', { desc = 'Decrease window height', noremap = true })
   map('t', '<A-d>', '<Cmd>horizontal resize +2<CR>', { desc = 'Increase window height', noremap = true })
   map('t', '<A-f>', '<Cmd>vertical resize +2<CR>', { desc = 'Increase window width', noremap = true })
+
+  -- Copy line Up/Down
+  map('n', '<C-Down>', 'yyp', opts)
+  map('n', '<C-Up>', 'yyP', opts)
+  map('v', '<C-Down>', 'y p', opts)
+  map('v', '<C-Up>', 'y P', opts)
 end
