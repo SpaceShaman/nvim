@@ -26,8 +26,6 @@ return function()
 
   map('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear highlights on search when pressing <Esc>' })
 
-  map('', '<C-p>', '<Plug>(telescope-find-files)', { desc = 'Find files' })
-
   -- Terminal
   map('', '<A-t>', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
   map('t', '<A-t>', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
@@ -46,4 +44,6 @@ return function()
   map('n', '<C-Up>', 'yyP', opts)
   map('v', '<C-Down>', 'y p', opts)
   map('v', '<C-Up>', 'y P', opts)
+
+  map('n', '-', '<CMD>Oil<CR>', { desc = 'Toggle Oil', noremap = true })
 end
