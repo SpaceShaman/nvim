@@ -47,11 +47,14 @@ return {
       -- You can put your default mappings / updates / etc. in here
       --  All the info you're looking for is in `:help telescope.setup()`
       --
-      -- defaults = {
-      --   mappings = {
-      --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-      --   },
-      -- },
+      defaults = {
+        mappings = {
+          i = {
+            ['<ESC>'] = 'close',
+            ['<M-BS>'] = { '<C-o>db<C-o>x', type = 'command', opts = { desc = 'Delete previous word' } },
+          },
+        },
+      },
       -- pickers = {}
       extensions = {
         ['ui-select'] = {
