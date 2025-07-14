@@ -1,5 +1,7 @@
 return {
-  'SpaceShaman/window-shuffler.nvim',
+  dir = '~/Dev/window-shuffler.nvim',
+  name = 'window-shuffler.nvim',
+  -- 'SpaceShaman/window-shuffler.nvim',
   opts = {
     keymaps = {
       left = '<Leader>j',
