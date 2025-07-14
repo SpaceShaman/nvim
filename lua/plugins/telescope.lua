@@ -32,7 +32,7 @@ return {
     -- After running this command, a window will open up and you're able to
     -- type in the prompt window. You'll see a list of `help_tags` options and
     -- a corresponding preview of the help.
-    --
+
     -- Two important keymaps to use while in Telescope are:
     --  - Insert mode: <c-/>
     --  - Normal mode: ?
@@ -84,10 +84,7 @@ return {
     -- Slightly advanced example of overriding default behavior and theme
     vim.keymap.set('n', '<leader>/', function()
       -- You can pass additional configuration to Telescope to change the theme, layout, etc.
-      builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-        winblend = 10,
-        previewer = true,
-      })
+      builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown())
     end, { desc = '[/] Fuzzily search in current buffer' })
 
     -- It's also possible to pass additional configuration options.
