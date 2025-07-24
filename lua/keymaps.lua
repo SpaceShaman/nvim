@@ -26,6 +26,9 @@ return function()
 
   map('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear highlights on search when pressing <Esc>' })
 
+  -- go to previous buffer
+  map('n', 'gb', '<C-^>', { desc = 'Go to previous buffer' })
+
   -- Terminal
   map('', '<A-t>', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
   map('t', '<A-t>', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })

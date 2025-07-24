@@ -7,5 +7,8 @@ return {
     opleader = {
       line = '<C-_>',
     },
+    mappings = {
+      basic = false,
+    },
   },
 }
