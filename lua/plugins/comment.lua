@@ -2,13 +2,17 @@ return {
   'numToStr/Comment.nvim',
   opts = {
     toggler = {
-      line = '<C-_>',
+      line = '<leader>cc',
+      block = '<leader>cb',
     },
     opleader = {
-      line = '<C-_>',
+      line = '<leader>c',
+      block = '<leader>b',
     },
-    mappings = {
-      basic = false,
+    extra = {
+      above = '<leader>cO',
+      below = '<leader>co',
+      eol = '<leader>ca',
     },
   },
 }
