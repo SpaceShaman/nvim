@@ -30,6 +30,8 @@ return {
           i = {
             ['<ESC>'] = 'close',
             ['<M-BS>'] = { '<C-o>db<C-o>x', type = 'command', opts = { desc = 'Delete previous word' } },
+            ['<C-s>'] = require('telescope.actions').select_vertical,
+            ['<C-h>'] = require('telescope.actions').select_horizontal,
           },
         },
       },
