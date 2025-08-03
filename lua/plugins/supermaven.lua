@@ -7,5 +7,6 @@ return {
       accept_suggestion = '<Tab>',
       clear_suggestion = '<C-j>',
     },
+    ignore_filetypes = { 'elixir' },
   },
 }
