@@ -208,6 +208,7 @@ return {
       --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+      local home_dir = vim.fn.expand '~'
       local servers = {
         -- clangd = {},
         -- gopls = {},
@@ -252,6 +253,9 @@ return {
               },
             },
           },
+        },
+        elixirls = {
+          cmd = home_dir .. '/.local/share/elixir-lsp/elixir-ls/language_server.sh',
         },
       }
 

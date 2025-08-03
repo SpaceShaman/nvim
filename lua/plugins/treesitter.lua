@@ -3,11 +3,25 @@ return {
   build = ':TSUpdate',
   main = 'nvim-treesitter.configs',
   opts = {
-    ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'python' },
-    auto_install = true,
-    highlight = {
-      enable = true,
+    ensure_installed = {
+      'bash',
+      'c',
+      'diff',
+      'html',
+      'lua',
+      'luadoc',
+      'markdown',
+      'markdown_inline',
+      'query',
+      'vim',
+      'vimdoc',
+      'python',
+      'elixir',
+      'eex',
+      'heex',
     },
+    auto_install = true,
+    highlight = { enable = true },
   },
   -- There are additional nvim-treesitter modules that you can use to interact
   -- with nvim-treesitter. You should go explore a few and see what interests you:
