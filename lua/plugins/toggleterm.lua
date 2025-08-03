@@ -23,11 +23,10 @@ return {
       direction = 'float',
       float_opts = {
         border = 'curved',
-        winblend = 8,
       },
       on_open = function(term)
         vim.cmd 'startinsert!'
-        vim.keymap.set('t', '<esc>', '<nop>')
+        vim.api.nvim_buf_set_keymap(term.bufnr, 't', '<esc>', '<nop>', { noremap = true, silent = true })
         vim.api.nvim_buf_set_keymap(term.bufnr, 'n', 'q', '<cmd>close<CR>', { noremap = true, silent = true })
       end,
       on_close = function(term)
