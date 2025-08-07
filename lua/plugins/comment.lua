@@ -8,7 +8,9 @@ return {
     },
   },
   config = function()
-    vim.keymap.set('n', '<leader>c', '<Plug>(comment_toggle_linewise_current)', { desc = 'Toggle comment for current line' })
-    vim.keymap.set('x', '<leader>c', '<Plug>(comment_toggle_linewise_visual)', { desc = 'Toggle comment for current line' })
+    local keymap = vim.keymap.set
+
+    keymap('n', '<leader>c', '<Plug>(comment_toggle_linewise_current)', { desc = 'Toggle comment for current line' })
+    keymap('x', '<leader>c', '<Plug>(comment_toggle_linewise_visual)', { desc = 'Toggle comment for current line' })
   end,
 }
