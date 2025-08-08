@@ -3,7 +3,7 @@ return {
   version = '*',
   config = function()
     require('toggleterm').setup {
-      open_mapping = 't',
+      open_mapping = '<A-t>',
       autochdir = true,
       shell = 'fish',
       terminal_mappings = false,
