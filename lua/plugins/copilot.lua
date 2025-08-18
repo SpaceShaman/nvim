@@ -16,8 +16,8 @@ return {
           tool = 'Tool ',
         },
       }
-      vim.keymap.set('n', '<leader>i', '<cmd>CopilotChatToggle<cr>')
-      vim.keymap.set({ 'i', 'n' }, '<A-i>', '<cmd>CopilotChatToggle<cr>')
+      vim.keymap.set('n', '<leader>i', '<cmd>CopilotChatToggle<cr>', { silent = true, desc = 'AI Chat' })
+      vim.keymap.set({ 'i', 'n' }, '<A-i>', '<cmd>CopilotChatToggle<cr>', { silent = true, desc = 'AI Chat' })
     end,
   },
 }
