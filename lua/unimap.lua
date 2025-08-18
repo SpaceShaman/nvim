@@ -2,7 +2,7 @@ local M = {}
 
 local function apply_normal_like()
   if not vim.g.__cursor_remap_langmap_set then
-    vim.opt.langmap:append 'jkl\\;;hjkl'
+    vim.opt.langmap:append "jkl\\;';hjkl\\;"
     vim.g.__cursor_remap_langmap_set = true
   end
 end

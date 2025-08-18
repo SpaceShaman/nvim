@@ -4,11 +4,6 @@ return function()
   local map = vim.keymap.set
   local opts = { noremap = true }
 
-  -- map('', "'", ';', opts)
-  -- map('', 'j', 'h', opts)
-  -- map('', 'k', 'j', opts)
-  -- map('', 'l', 'k', opts)
-  -- map('', ';', 'l', opts)
   map('', 'K', '5<Down>', opts)
   map('', 'L', '5<Up>', opts)
 
