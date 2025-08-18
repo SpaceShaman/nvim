@@ -7,7 +7,7 @@ return {
     build = 'make tiktoken',
     config = function()
       require('CopilotChat').setup {
-        model = 'gpt-5-mini',
+        -- model = 'gpt-5-mini',
         language = 'Polish',
         show_help = false,
         headers = {
