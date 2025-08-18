@@ -1,27 +1,23 @@
 local M = {}
 
-local function apply_normal_like()
+local function apply()
   if not vim.g.__cursor_remap_langmap_set then
     vim.opt.langmap:append "jkl\\;';hjkl\\;"
     vim.g.__cursor_remap_langmap_set = true
   end
 end
 
-function M.apply()
-  apply_normal_like()
-end
-
 function M.setup()
   vim.api.nvim_create_autocmd('VimEnter', {
     callback = function()
-      vim.schedule(M.apply)
+      vim.schedule(apply)
     end,
   })
   pcall(function()
     vim.api.nvim_create_autocmd('User', {
       pattern = 'VeryLazy',
       callback = function()
-        vim.schedule(M.apply)
+        vim.schedule(apply)
       end,
     })
   end)
@@ -29,7 +25,7 @@ function M.setup()
   vim.api.nvim_create_autocmd({ 'BufWinEnter', 'FileType', 'TermOpen', 'WinEnter' }, {
     group = g,
     callback = function()
-      vim.schedule(M.apply)
+      vim.schedule(apply)
     end,
   })
 end
