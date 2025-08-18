@@ -1,6 +1,7 @@
 return function()
   vim.g.mapleader = ' '
   vim.g.maplocalleader = ' '
+  vim.opt.langmap:append "jkl\\;';hjkl\\;"
   local map = vim.keymap.set
   local opts = { noremap = true }
 
