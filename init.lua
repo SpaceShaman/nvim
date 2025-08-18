@@ -1,6 +1,7 @@
 -- See `:h vim.o`
 --  For more options, you can see `:h option-list`
 require 'keymaps'()
+
 vim.g.copilot_no_tab_map = true
 vim.o.number = true
 vim.o.relativenumber = true
@@ -103,5 +104,6 @@ require('lazy').setup {
   { import = 'plugins' },
 }
 
+require('unimap').setup()
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
