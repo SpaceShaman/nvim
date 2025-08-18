@@ -30,8 +30,6 @@ return function()
   map('n', 'gb', '<C-^>', { desc = 'Go to previous buffer' })
 
   -- Terminal
-  -- map('', '<A-t>', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
-  -- map('t', '<A-t>', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
   map('t', '<Esc>', '<C-\\><C-n>', { desc = 'Return to normal mode' })
   map('t', '<A-j>', '<cmd>wincmd h<CR>', { desc = 'Go to the left window', noremap = true })
   map('t', '<A-k>', '<cmd>wincmd j<CR>', { desc = 'Go to the lower window', noremap = true })
