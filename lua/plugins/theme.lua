@@ -6,6 +6,7 @@ return {
       overrides = {
         Normal = { bg = 'None' },
         SignColumn = { bg = 'None' },
+        WinSeparator = { bg = 'None' },
       },
     }
     local file = io.open(vim.fn.expand '~/.config/theme', 'r')
