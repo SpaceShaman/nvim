@@ -6,6 +6,7 @@ vim.g.copilot_no_tab_map = true
 vim.o.number = true
 vim.o.relativenumber = true
 vim.g.have_nerd_font = true
+vim.opt.fillchars:append { eob = ' ' }
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
