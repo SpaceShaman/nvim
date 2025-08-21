@@ -1,5 +1,5 @@
 return {
-  'SpaceShaman/neovim-ayu',
+  'Shatur/neovim-ayu',
   priority = 1000, -- Make sure to load this before all the other start plugins.
   config = function()
     local colors = require 'ayu.colors'
