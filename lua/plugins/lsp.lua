@@ -226,6 +226,18 @@ return {
           end,
         },
       }
+      -- Automatically run code action on save
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        callback = function(args)
+          local clients = vim.lsp.get_active_clients { bufnr = args.buf }
+          for _, client in ipairs(clients) do
+            vim.lsp.buf.code_action {
+              context = { only = { 'source.organizeImports' } },
+              apply = true,
+            }
+          end
+        end,
+      })
     end,
   },
 }
