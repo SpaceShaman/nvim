@@ -50,7 +50,7 @@ return {
     keymap('n', '<leader>sk', telescope.keymaps, { desc = '[S]earch [K]eymaps' })
     keymap('n', '<leader>sf', telescope.find_files, { desc = '[S]earch [F]iles' })
     keymap('n', '<leader>f', telescope.find_files, { desc = '[S]earch [F]iles' })
-    keymap('n', '<leader>ss', telescope.builtin, { desc = '[S]earch [S]elect Telescope' })
+    -- keymap('n', '<leader>ss', telescope.builtin, { desc = '[S]earch [S]elect Telescope' })
     keymap('n', '<leader>sw', telescope.grep_string, { desc = '[S]earch current [W]ord' })
     keymap('n', '<leader>sg', telescope.live_grep, { desc = '[S]earch by [G]rep' })
     keymap('n', '<leader>sd', telescope.diagnostics, { desc = '[S]earch [D]iagnostics' })
