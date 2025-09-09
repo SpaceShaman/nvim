@@ -15,16 +15,11 @@ return {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
     dependencies = {
-      -- Automatically install LSPs and related tools to stdpath for Neovim
-      -- Mason must be loaded before its dependents so we need to set it up here.
-      -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
       { 'mason-org/mason.nvim', opts = {} },
       'mason-org/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
-
       -- Useful status updates for LSP.
       { 'j-hui/fidget.nvim', opts = {} },
-
       -- Allows extra capabilities provided by blink.cmp
       'saghen/blink.cmp',
     },
@@ -154,12 +149,6 @@ return {
         },
       }
       local capabilities = require('blink.cmp').get_lsp_capabilities()
-      --  Add any additional override configuration in the following tables. Available keys are:
-      --  - cmd (table): Override the default command used to start the server
-      --  - filetypes (table): Override the default list of associated filetypes for the server
-      --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
-      --  - settings (table): Override the default settings passed when initializing the server.
-      --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local home_dir = vim.fn.expand '~'
       local servers = {
         lua_ls = {
@@ -191,41 +180,85 @@ return {
         elixirls = {
           cmd = home_dir .. '/.local/share/elixir-lsp/elixir-ls/language_server.sh',
         },
+        ts_ls = {
+          init_options = {
+            plugins = {
+              {
+                name = '@vue/typescript-plugin',
+                location = vim.fn.expand '$MASON/packages/vue-language-server/node_modules/@vue/language-server',
+                languages = { 'vue' },
+                configNamespace = 'typescript',
+              },
+            },
+          },
+          filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+        },
+        vue_ls = {
+          on_init = function(client)
+            client.handlers['tsserver/request'] = function(_, result, context)
+              local ts_clients = vim.lsp.get_clients { bufnr = context.bufnr, name = 'ts_ls' }
+              local vtsls_clients = vim.lsp.get_clients { bufnr = context.bufnr, name = 'vtsls' }
+              local clients = {}
+
+              vim.list_extend(clients, ts_clients)
+              vim.list_extend(clients, vtsls_clients)
+
+              if #clients == 0 then
+                vim.notify('Could not find `vtsls` or `ts_ls` lsp client, `vue_ls` would not work without it.', vim.log.levels.ERROR)
+                return
+              end
+              local ts_client = clients[1]
+
+              local param = unpack(result)
+              local id, command, payload = unpack(param)
+              ts_client:exec_cmd({
+                title = 'vue_request_forward', -- You can give title anything as it's used to represent a command in the UI, `:h Client:exec_cmd`
+                command = 'typescript.tsserverRequest',
+                arguments = {
+                  command,
+                  payload,
+                },
+              }, { bufnr = context.bufnr }, function(_, r)
+                local response = r and r.body
+                -- TODO: handle error or response nil here, e.g. logging
+                -- NOTE: Do NOT return if there's an error or no response, just return nil back to the vue_ls to prevent memory leak
+                local response_data = { { id, response } }
+
+                ---@diagnostic disable-next-line: param-type-mismatch
+                client:notify('tsserver/response', response_data)
+              end)
+            end
+          end,
+        },
+        tailwindcss = {},
       }
 
-      -- Ensure the servers and tools above are installed
-      --
-      -- To check the current status of installed tools and/or manually install
-      -- other tools, you can run
-      --    :Mason
-      --
-      -- You can press `g?` for help in this menu.
-      --
-      -- `mason` had to be setup earlier: to configure its options see the
-      -- `dependencies` table for `nvim-lspconfig` above.
-      --
-      -- You can add other tools here that you want Mason to install
-      -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
-      require('mason-lspconfig').setup {
-        ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
-        automatic_installation = false,
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for ts_ls)
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
-          end,
-        },
-      }
+      local lsp = require 'lspconfig'
+      for name, cfg in pairs(servers) do
+        cfg.capabilities = vim.tbl_deep_extend('force', {}, capabilities, cfg.capabilities or {})
+        lsp[name].setup(cfg)
+      end
+
+      -- require('mason-lspconfig').setup {
+      --   ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
+      --   automatic_installation = false,
+      --   handlers = {
+      --     function(server_name)
+      --       local server = servers[server_name] or {}
+      --       -- This handles overriding only values explicitly passed
+      --       -- by the server configuration above. Useful when disabling
+      --       -- certain features of an LSP (for example, turning off formatting for ts_ls)
+      --       server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+      --       require('lspconfig')[server_name].setup(server)
+      --     end,
+      --   },
+      -- }
     end,
   },
 }
