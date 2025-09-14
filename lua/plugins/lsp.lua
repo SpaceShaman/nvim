@@ -192,7 +192,7 @@ return {
         },
         tailwindcss = {},
         expert = {
-          cmd = { 'expert' },
+          cmd = { home_dir .. '/.local/bin/expert' },
           root_markers = { 'mix.exs', '.git' },
           filetypes = { 'elixir', 'eelixir', 'heex' },
         },
