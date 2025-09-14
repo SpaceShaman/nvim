@@ -177,9 +177,6 @@ return {
             },
           },
         },
-        elixirls = {
-          cmd = home_dir .. '/.local/share/elixir-lsp/elixir-ls/language_server.sh',
-        },
         ts_ls = {
           init_options = {
             plugins = {
@@ -194,6 +191,11 @@ return {
           filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
         },
         tailwindcss = {},
+        expert = {
+          cmd = { 'expert' },
+          root_markers = { 'mix.exs', '.git' },
+          filetypes = { 'elixir', 'eelixir', 'heex' },
+        },
       }
 
       local ensure_installed = vim.tbl_keys(servers or {})
@@ -204,10 +206,10 @@ return {
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
-      local lsp = require 'lspconfig'
       for name, cfg in pairs(servers) do
         cfg.capabilities = vim.tbl_deep_extend('force', {}, capabilities, cfg.capabilities or {})
-        lsp[name].setup(cfg)
+        vim.lsp.config(name, cfg)
+        vim.lsp.enable(name)
       end
     end,
   },
