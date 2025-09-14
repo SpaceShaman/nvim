@@ -148,8 +148,10 @@ return {
           end,
         },
       }
+
       local capabilities = require('blink.cmp').get_lsp_capabilities()
       local home_dir = vim.fn.expand '~'
+
       local servers = {
         lua_ls = {
           settings = {
@@ -196,15 +198,12 @@ return {
           root_markers = { 'mix.exs', '.git' },
           filetypes = { 'elixir', 'eelixir', 'heex' },
         },
+        stylua = {}, -- Used to format Lua code
+        prettier = {},
+        vue_ls = {},
       }
 
-      local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, {
-        'stylua', -- Used to format Lua code
-        'prettier',
-        'vue_ls',
-      })
-      require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+      require('mason-tool-installer').setup { ensure_installed = vim.tbl_keys(servers) }
 
       for name, cfg in pairs(servers) do
         cfg.capabilities = vim.tbl_deep_extend('force', {}, capabilities, cfg.capabilities or {})
