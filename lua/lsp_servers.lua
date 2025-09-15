@@ -43,9 +43,5 @@ return {
   stylua = {}, -- Used to format Lua code
   prettier = {},
   vue_ls = {},
-  expert = {
-    cmd = { home_dir .. '/.local/bin/expert' },
-    root_markers = { 'mix.exs', '.git' },
-    filetypes = { 'elixir', 'eelixir', 'heex' },
-  },
+  expert = {},
 }
