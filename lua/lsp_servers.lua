@@ -43,5 +43,6 @@ return {
   stylua = {}, -- Used to format Lua code
   prettier = {},
   vue_ls = {},
-  expert = {},
+  -- expert = {},
+  elixirls = {},
 }

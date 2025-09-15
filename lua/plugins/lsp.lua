@@ -152,6 +152,7 @@ return {
       local capabilities = require('blink.cmp').get_lsp_capabilities()
       local servers = require 'lsp_servers'
       require('mason-tool-installer').setup { ensure_installed = vim.tbl_keys(servers) }
+      require('mason-lspconfig').setup()
 
       for name, cfg in pairs(servers) do
         cfg.capabilities = vim.tbl_deep_extend('force', {}, capabilities, cfg.capabilities or {})
