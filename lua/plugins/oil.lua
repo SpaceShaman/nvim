@@ -11,7 +11,7 @@ return {
         ['<C-v>'] = { 'actions.select', opts = { vertical = true } },
       },
     }
-    -- Open oil on startup if no files are open
+    -- Open Oil on startup when no file is opened
     vim.api.nvim_create_autocmd('VimEnter', {
       once = true,
       callback = function()
