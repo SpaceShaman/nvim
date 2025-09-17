@@ -28,6 +28,7 @@ return {
       'typescript',
       'javascript',
       'json',
+      'dockerfile',
     },
     auto_install = true,
     highlight = { enable = true },
