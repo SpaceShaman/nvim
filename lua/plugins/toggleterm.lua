@@ -34,6 +34,7 @@ return {
     local keymap = vim.keymap.set
 
     keymap('t', '<A-t>', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
+    keymap('n', '<leader>t', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
     keymap('n', '<leader>g', '<cmd>lua _lazygit_toggle()<CR>', { desc = 'Lazygit', noremap = true, silent = true })
   end,
 }

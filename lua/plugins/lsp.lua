@@ -114,7 +114,7 @@ return {
           end
 
           -- toggle inlay hints in your code, if the language server you are using supports them
-          map('<leader>th', function()
+          map('gth', function()
             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
           end, '[T]oggle Inlay [H]ints')
         end,

@@ -11,7 +11,7 @@ return {
       { '<leader>s', group = '[S]earch' },
       { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       { '<leader>m', group = '[M]essage' },
-      { '<leader>t', group = '[T]ests' },
+      { 'gt', group = '[T]ests' },
     },
   },
 }

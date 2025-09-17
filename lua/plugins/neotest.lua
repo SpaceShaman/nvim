@@ -20,32 +20,38 @@ return {
     local neotest = require 'neotest'
     local keymap = vim.keymap.set
 
-    keymap('n', '<leader>tn', function()
+    keymap('n', 'gtn', function()
       neotest.run.run()
     end, { desc = 'Run nearest test' })
-    keymap('n', '<leader>tf', function()
+    keymap('n', 'gtf', function()
       neotest.run.run(vim.fn.expand '%')
     end, { desc = 'Run tests in current file' })
-    keymap('n', '<leader>ta', function()
+    keymap('n', 'gta', function()
       neotest.run.run { suite = true }
     end, { desc = 'Run all tests' })
-    keymap('n', '<leader>td', function()
+    keymap('n', 'gtd', function()
       neotest.run.run { strategy = 'dap' }
     end, { desc = 'Debug nearest test' })
-    keymap('n', '<leader>ts', function()
+    keymap('n', 'gts', function()
       neotest.run.stop()
     end, { desc = 'Stop tests' })
-    keymap('n', '<leader>to', function()
+    keymap('n', 'gto', function()
       neotest.output.open()
     end, { desc = 'Show test output' })
-    keymap('n', '<leader>tp', function()
+    keymap('n', 'gtp', function()
       neotest.output_panel.toggle()
     end, { desc = 'Toggle test output panel' })
-    keymap('n', '<leader>tt', function()
+    keymap('n', 'gtt', function()
       neotest.summary.toggle()
     end, { desc = 'Toggle test summary' })
-    keymap('n', '<leader>tc', function()
+    keymap('n', 'gtc', function()
       neotest.run.run { suite = true, env = { CI = true } }
     end, { desc = 'Run all tests in CI mode' })
+    keymap('n', ']t', function()
+      neotest.jump.next { status = 'failed' }
+    end, { desc = 'Next failed test' })
+    keymap('n', '[t', function()
+      neotest.jump.prev { status = 'failed' }
+    end, { desc = 'Prev failed test' })
   end,
 }
