@@ -6,6 +6,7 @@ return {
     'antoinemadec/FixCursorHold.nvim',
     'nvim-treesitter/nvim-treesitter',
     'nvim-neotest/neotest-python',
+    'marilari88/neotest-vitest',
     'folke/which-key.nvim',
   },
   config = function()
@@ -14,6 +15,7 @@ return {
         require 'neotest-python' {
           runner = 'pytest',
         },
+        require 'neotest-vitest',
       },
     }
 
