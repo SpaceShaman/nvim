@@ -6,17 +6,21 @@ return {
     },
     build = 'make tiktoken',
     config = function()
+      local present, telescope = pcall(require, 'telescope')
+      if present then
+        telescope.load_extension 'ui-select'
+      end
       require('CopilotChat').setup {
         model = 'gpt-4.1',
         language = 'Polish',
         show_help = false,
         headers = {
-          user = 'User ',
-          assistant = 'AI ',
-          tool = 'Tool ',
+          user = '👤 User ',
+          assistant = '🤖 AI ',
+          tool = '🔧 Tool ',
         },
         tools = { 'copilot' },
-        sticky = { '#buffers:visible' },
+        sticky = { '#buffers:full' },
       }
       vim.keymap.set('n', '<leader>i', '<cmd>CopilotChatToggle<cr>', { silent = true, desc = 'AI Chat' })
       vim.keymap.set({ 'i', 'n' }, '<A-i>', '<cmd>CopilotChatToggle<cr>', { silent = true, desc = 'AI Chat' })

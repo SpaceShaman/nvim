@@ -10,6 +10,8 @@ vim.opt.fillchars:append { eob = ' ' }
 
 vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
 
+vim.opt.laststatus = 3
+
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
 -- Don't show the mode, since it's already in the status line
