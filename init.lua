@@ -90,6 +90,28 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Remaps Vim mark commands so that lowercase marks behave as global.
+-- Normally, 'a–z' marks are buffer-local and 'A–Z' marks are global.
+-- With this mapping:
+--   - typing `ma` will actually set the global mark `A`
+--   - jumping with `'a` or `` `a `` will go to the global `A` mark
+-- Non-letter marks (like `m1`, `m/`) remain unchanged.
+-- This ensures all user-defined marks act globally across buffers.
+local function upper_if_lower(c)
+  return (c:match '%l' and c:upper()) or c
+end
+
+local function map_mark_prefix(prefix)
+  vim.keymap.set('n', prefix, function()
+    local c = vim.fn.getcharstr()
+    return prefix .. upper_if_lower(c)
+  end, { expr = true, noremap = true })
+end
+
+map_mark_prefix 'm'
+map_mark_prefix "'"
+map_mark_prefix '`'
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
