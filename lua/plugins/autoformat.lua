@@ -13,8 +13,8 @@ return {
         return nil
       else
         return {
-          timeout_ms = 500,
-          lsp_format = 'fallback',
+          timeout_ms = 2500,
+          lsp_fallback = true,
         }
       end
     end,
@@ -23,7 +23,7 @@ return {
       python = { 'ruff_fix', 'ruff_organize_imports', 'ruff_format' },
       typescript = { 'prettier' },
       javascript = { 'prettier' },
-      vue = { 'prettier', 'tailwindcss' },
+      vue = { 'prettier' },
     },
   },
 }
