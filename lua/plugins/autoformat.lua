@@ -24,6 +24,7 @@ return {
       typescript = { 'prettier' },
       javascript = { 'prettier' },
       vue = { 'prettier' },
+      json = { 'prettier' },
     },
   },
 }
