@@ -7,6 +7,7 @@ return {
     'nvim-treesitter/nvim-treesitter',
     'nvim-neotest/neotest-python',
     'marilari88/neotest-vitest',
+    -- { dir = '/home/ton618/Dev/neotest-python' },
     'folke/which-key.nvim',
   },
   config = function()
@@ -14,6 +15,7 @@ return {
       adapters = {
         require 'neotest-python' {
           runner = 'pytest',
+          args = { '-n', 'auto' },
         },
         require 'neotest-vitest',
       },
