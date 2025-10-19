@@ -15,7 +15,7 @@ return {
       adapters = {
         require 'neotest-python' {
           runner = 'pytest',
-          args = { '-n', 'auto' },
+          -- args = { '-n', 'auto' },
         },
         require 'neotest-vitest',
       },

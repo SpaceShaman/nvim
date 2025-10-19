@@ -8,7 +8,17 @@ vim.o.relativenumber = true
 vim.g.have_nerd_font = true
 vim.opt.fillchars:append { eob = ' ' }
 
-vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
+vim.opt.sessionoptions = {
+  'buffers',
+  'curdir',
+  'folds',
+  'help',
+  'tabpages',
+  'winsize',
+  'winpos',
+  'localoptions',
+  'blank',
+}
 
 vim.opt.laststatus = 3
 
