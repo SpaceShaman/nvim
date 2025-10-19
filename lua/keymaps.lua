@@ -39,8 +39,8 @@ return function()
   -- Copy line Up/Down
   map('n', '<C-Down>', 'yyp', opts)
   map('n', '<C-Up>', 'yyP', opts)
-  map('v', '<C-Down>', 'y p', opts)
-  map('v', '<C-Up>', 'y P', opts)
+  map('v', '<C-Down>', "y'<Pgv", opts)
+  map('v', '<C-Up>', "y'>pgv", opts)
 
   map('n', '-', '<cmd>Oil<CR>', { desc = 'Toggle Oil', noremap = true })
 end
