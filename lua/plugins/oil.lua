@@ -10,6 +10,15 @@ return {
         ['<C-_>'] = { 'actions.show_help', mode = 'n' },
         ['<C-v>'] = { 'actions.select', opts = { vertical = true } },
       },
+      view_options = {
+        is_hidden_file = function(name, bufnr)
+          local hidden_names = {
+            ['__pycache__'] = true,
+            ['node_modules'] = true,
+          }
+          return name:match '^%.' or hidden_names[name]
+        end,
+      },
     }
     -- Open Oil on startup when no file is opened
     vim.api.nvim_create_autocmd('VimEnter', {
