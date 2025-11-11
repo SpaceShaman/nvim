@@ -12,6 +12,7 @@ return {
       { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       { '<leader>m', group = '[M]essage' },
       { 'gt', group = '[T]ests' },
+      { '<leader>z', group = '[Z]k' },
     },
   },
 }

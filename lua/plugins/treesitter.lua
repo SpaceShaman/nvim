@@ -32,7 +32,7 @@ return {
       'dockerfile',
     },
     auto_install = true,
-    highlight = { enable = true },
+    highlight = { enable = true, additional_vim_regex_highlighting = { 'markdown' } },
   },
   -- There are additional nvim-treesitter modules that you can use to interact
   -- with nvim-treesitter. You should go explore a few and see what interests you:
