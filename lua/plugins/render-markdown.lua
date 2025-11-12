@@ -5,32 +5,8 @@ return {
   ---@type render.md.UserConfig
   opts = {},
   config = function()
-    require('lazy').load { plugins = { 'zk-nvim' } }
-    local api = require 'zk.api'
-    local notes = {}
-
-    vim.schedule(function()
-      api.list(nil, {
-        select = { 'title', 'filenameStem' },
-      }, function(err, _notes)
-        if err then
-          return vim.notify(err, vim.log.levels.ERROR)
-        end
-        for _, n in ipairs(_notes) do
-          notes[n.filenameStem] = n.title
-        end
-      end)
-    end)
-
     require('render-markdown').setup {
       anti_conceal = { enabled = false },
-      link = {
-        wiki = {
-          body = function(ctx)
-            return notes[ctx.destination] or nil
-          end,
-        },
-      },
     }
     vim.api.nvim_create_autocmd({ 'BufEnter', 'BufRead', 'BufNewFile' }, {
       callback = function(args)
