@@ -23,6 +23,7 @@ return {
     end)
 
     require('render-markdown').setup {
+      anti_conceal = { enabled = false },
       link = {
         wiki = {
           body = function(ctx)
