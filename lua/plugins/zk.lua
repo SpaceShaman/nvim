@@ -24,7 +24,7 @@ return {
         if require('zk.util').notebook_root(vim.fn.expand '%:p') ~= nil then
           map('n', '<CR>', '<Cmd>lua vim.lsp.buf.definition()<CR>', 'Open the link under the caret')
           map('n', '<leader>zb', '<Cmd>ZkBacklinks<CR>', 'Open notes linking to the current buffer')
-          map('n', '<leader>zl', '<Cmd>ZkLinks<CR>', 'Open notes linked by the current buffer')
+          map('n', '<leader>zk', '<Cmd>ZkLinks<CR>', 'Open notes linked by the current buffer')
           map('n', '<leader>zn', "<Cmd>ZkNew { dir = vim.fn.expand('%:p:h'), title = vim.fn.input('Title: ') }<CR>", 'Create a new note')
           map('v', '<leader>zn', ":'<,'>ZkNewFromContentSelection { title = vim.fn.input('Title: ') }<CR>", 'Create a new note using the current selection')
           map('n', '<leader>zp', '<Cmd>lua vim.lsp.buf.hover()<CR>', 'Preview a linked note')
