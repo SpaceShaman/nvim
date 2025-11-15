@@ -1,8 +1,7 @@
 return {
-  -- 'jake-stewart/multicursor.nvim',
-  'SpaceShaman/multicursor.nvim',
   -- dir = '~/Dev/multicursor.nvim',
-  -- branch = '1.0',
+  'jake-stewart/multicursor.nvim',
+  branch = '1.0',
   config = function()
     local mc = require 'multicursor-nvim'
     mc.setup()
