@@ -1,11 +1,11 @@
 return {
   'github/copilot.vim',
   config = function()
-    map = vim.keymap.set
+    local map = vim.keymap.set
     vim.g.copilot_no_tab_map = true
 
     -- if a suggestion is visible -> copilot-next, otherwise -> copilot-suggest
-    _G.copilot_next_or_suggest = function()
+    local function copilot_next_or_suggest()
       if vim.b._copilot ~= nil then
         return vim.api.nvim_replace_termcodes('<Plug>(copilot-next)', true, true, true)
       else
@@ -18,7 +18,7 @@ return {
       replace_keycodes = false,
     })
     map('i', '<F13>', '<Plug>(copilot-accept-word)') -- F13 is Ctrl+;
-    map('i', '<C-l>', 'v:lua.copilot_next_or_suggest()', {
+    map('i', '<C-l>', copilot_next_or_suggest, {
       expr = true,
       replace_keycodes = false,
     })
