@@ -3,10 +3,9 @@ return {
   version = '*',
   opts = {
     keymaps = {
-      accept_word = '<F13>',
+      accept_word = '<F13>', -- CTRL-;
       accept_suggestion = '<Tab>',
       clear_suggestion = '<C-j>',
     },
-    ignore_filetypes = { 'elixir' },
   },
 }
