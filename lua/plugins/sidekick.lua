@@ -1,8 +1,5 @@
 return {
   'folke/sidekick.nvim',
-  dependencies = {
-    'folke/snacks.nvim',
-  },
   config = function()
     local map = vim.keymap.set
     local sidekick = require 'sidekick'
