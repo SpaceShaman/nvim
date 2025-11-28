@@ -23,14 +23,14 @@ return {
     end, { expr = true })
 
     local toggle_cli = function()
-      require('sidekick.cli').toggle { name = 'copilot', focus = true }
+      sidekick_cli.toggle { name = 'copilot', focus = true }
     end
 
     map('n', '<leader>i', toggle_cli, { desc = 'AI Toggle', silent = true })
     map({ 'i', 'n', 't' }, '<A-i>', toggle_cli, { desc = 'AI Toggle', silent = true })
 
     local send_selection = function()
-      require('sidekick.cli').send { msg = '{selection}' }
+      sidekick_cli.send { msg = '{selection}' }
     end
 
     map('x', '<leader>i', send_selection, { desc = 'Send Selection to AI', silent = true })
