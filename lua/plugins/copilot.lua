@@ -13,6 +13,7 @@ return {
       end
     end
 
+    -- if a suggestion is visible -> accept line, otherwise -> move cursor right by word
     local function copilot_accept_line_or_move_right()
       local suggestion = vim.fn['copilot#GetDisplayedSuggestion']()
       if suggestion.text ~= '' then
