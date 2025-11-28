@@ -5,6 +5,7 @@ return {
   dependencies = {
     'nvim-treesitter/nvim-treesitter-context',
     'RRethy/nvim-treesitter-endwise',
+    'nvim-treesitter/nvim-treesitter-textobjects',
   },
   opts = {
     ensure_installed = {
