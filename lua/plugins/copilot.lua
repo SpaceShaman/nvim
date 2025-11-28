@@ -13,7 +13,7 @@ return {
       end
     end
 
-    map('i', '<Tab>', 'copilot#Accept("\\<CR>")', {
+    map('i', '<Tab>', 'copilot#Accept("\\<Tab>")', {
       expr = true,
       replace_keycodes = false,
     })
