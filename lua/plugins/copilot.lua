@@ -13,6 +13,15 @@ return {
       end
     end
 
+    local function copilot_accept_line_or_move_right()
+      local suggestion = vim.fn['copilot#GetDisplayedSuggestion']()
+      if suggestion.text ~= '' then
+        return vim.api.nvim_replace_termcodes('<Plug>(copilot-accept-line)', true, true, true)
+      else
+        return vim.api.nvim_replace_termcodes('<C-o>w', true, true, true)
+      end
+    end
+
     map('i', '<Tab>', 'copilot#Accept("\\<Tab>")', {
       expr = true,
       replace_keycodes = false,
@@ -23,6 +32,9 @@ return {
       replace_keycodes = false,
     })
     map('i', '<C-j>', '<Plug>(copilot-dismiss)')
-    map('i', '<C-Right>', '<Plug>(copilot-accept-line)')
+    map('i', '<C-Right>', copilot_accept_line_or_move_right, {
+      expr = true,
+      replace_keycodes = false,
+    })
   end,
 }
