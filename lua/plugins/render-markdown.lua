@@ -6,7 +6,7 @@ return {
   opts = {},
   config = function()
     require('render-markdown').setup {
-      anti_conceal = { enabled = false },
+      -- anti_conceal = { enabled = false },
     }
     vim.api.nvim_create_autocmd({ 'BufEnter', 'BufRead', 'BufNewFile' }, {
       callback = function(args)
