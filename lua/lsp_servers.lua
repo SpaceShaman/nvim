@@ -42,4 +42,5 @@ return {
   vue_ls = {},
   -- expert = {},
   elixirls = {},
+  tombi = {},
 }

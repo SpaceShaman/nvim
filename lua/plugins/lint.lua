@@ -5,6 +5,7 @@ return {
     local lint = require 'lint'
     lint.linters_by_ft = {
       markdown = { nil },
+      toml = { 'tombi' },
     }
     -- lint.linters_by_ft['markdown'] = { 'markdownlint-cli2' }
 

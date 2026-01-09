@@ -25,6 +25,7 @@ return {
       javascript = { 'prettier' },
       vue = { 'prettier' },
       json = { 'prettier' },
+      toml = { 'tombifmt' },
     },
   },
 }
