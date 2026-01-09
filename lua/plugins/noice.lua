@@ -23,6 +23,16 @@ return {
       presets = {
         long_message_to_split = true, -- long messages will be sent to a split
       },
+      routes = {
+        {
+          filter = {
+            event = 'msg_show',
+            kind = '',
+            find = 'lines',
+          },
+          opts = { skip = true },
+        },
+      },
     }
     local keymap = vim.keymap.set
 
