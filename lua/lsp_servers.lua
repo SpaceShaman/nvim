@@ -31,4 +31,5 @@ return {
   -- expert = {},
   elixirls = {},
   tombi = {},
+  dockerls = {},
 }
