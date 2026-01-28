@@ -32,4 +32,8 @@ return {
   elixirls = {},
   tombi = {},
   dockerls = {},
+  docker_compose_language_service = {
+    filetypes = { 'yaml', 'docker-compose' },
+    root_markers = { '*compose*.yaml', '*compose*.yml' },
+  },
 }

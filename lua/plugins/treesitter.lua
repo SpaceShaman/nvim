@@ -29,7 +29,7 @@ return {
       'typescript',
       'javascript',
       'json',
-      'dockerfile',
+      -- 'dockerfile',
     }
     require('nvim-treesitter').install(languages)
 
