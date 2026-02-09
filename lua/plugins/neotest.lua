@@ -24,6 +24,29 @@ return {
     local neotest = require 'neotest'
     local keymap = vim.keymap.set
 
+    keymap('', '<F7>', function()
+      neotest.run.run_last()
+      neotest.summary.open()
+    end, { desc = 'Run last tests' })
+    keymap('', '<F8>', function()
+      neotest.run.run()
+      neotest.summary.open()
+    end, { desc = 'Run nearest test' })
+    keymap('n', '<F9>', function()
+      neotest.run.run(vim.fn.expand '%')
+      neotest.summary.open()
+    end, { desc = 'Run tests in current file' })
+    keymap('n', '<F10>', function()
+      neotest.summary.toggle()
+    end, { desc = 'Toggle test summary' })
+    keymap('n', '<F11>', function()
+      neotest.run.run { suite = true }
+      neotest.summary.open()
+    end, { desc = 'Run all tests' })
+    keymap('n', '<F12>', function()
+      neotest.run.run_last { strategy = 'dap' }
+    end, { desc = 'Debug last test' })
+
     keymap('n', 'gtn', function()
       neotest.run.run()
     end, { desc = 'Run nearest test' })
