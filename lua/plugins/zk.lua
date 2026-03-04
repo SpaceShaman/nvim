@@ -17,6 +17,7 @@ return {
     map('n', '<leader>zt', '<Cmd>ZkTags<CR>', 'Open notes associated with the selected tags')
     map('n', '<leader>zf', "<Cmd>ZkNotes { sort = { 'modified' }, match = { vim.fn.input('Search: ') } }<CR>", 'Search for the notes matching a given query')
     map('v', '<leader>zf', ":'<,'>ZkMatch<CR>", 'Search for the notes matching the current visual selection')
+    map('n', '<leader>zd', '<Cmd>ZkNew { dir = "dreams", title = vim.fn.input("Title: ") }<CR>', 'Create a new dream journal note')
     -- More keybindings for Markdown buffers only.
     vim.api.nvim_create_autocmd('FileType', {
       pattern = 'markdown',
