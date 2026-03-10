@@ -7,6 +7,7 @@ vim.o.number = true
 vim.o.relativenumber = true
 vim.g.have_nerd_font = true
 vim.opt.fillchars:append { eob = ' ' }
+vim.opt.cmdheight = 0
 
 vim.opt.sessionoptions = {
   'buffers',
