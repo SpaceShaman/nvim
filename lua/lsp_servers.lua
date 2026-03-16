@@ -1,4 +1,3 @@
-local home_dir = vim.fn.expand '~'
 return {
   lua_ls = {
     settings = {
