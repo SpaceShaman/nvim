@@ -43,11 +43,11 @@ return {
     mc.addKeymapLayer(function(layerSet)
       -- Add or skip cursors to the next/previous match.
       layerSet({ 'n', 'x' }, 'n', mc.matchAddCursor)
-      layerSet({ 'n', 'x' }, 's', mc.matchSkipCursor)
       layerSet({ 'n', 'x' }, 'N', function()
         mc.matchAddCursor(-1)
       end)
-      layerSet({ 'n', 'x' }, 'S', function()
+      layerSet({ 'n', 'x' }, 'x', mc.matchSkipCursor)
+      layerSet({ 'n', 'x' }, 'X', function()
         mc.matchSkipCursor(-1)
       end)
 
