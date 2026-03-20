@@ -26,15 +26,9 @@ return {
     set({ 'n', 'x' }, '<leader>n', function()
       mc.matchAddCursor(1)
     end, { desc = 'Add cursors to the next match' })
-    set({ 'n', 'x' }, '<leader>s', function()
-      mc.matchSkipCursor(1)
-    end, { desc = 'Skip cursors to the next match' })
     set({ 'n', 'x' }, '<leader>N', function()
       mc.matchAddCursor(-1)
     end, { desc = 'Add cursors to the previous match' })
-    set({ 'n', 'x' }, '<leader>S', function()
-      mc.matchSkipCursor(-1)
-    end, { desc = 'Skip cursors to the previous match' })
 
     -- Add and remove cursors with control + left click.
     set('n', '<c-leftmouse>', mc.handleMouse)
