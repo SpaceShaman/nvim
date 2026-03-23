@@ -11,7 +11,7 @@
       let
         pkgs = import nixpkgs { inherit system; };
 
-        runtimeDeps = with pkgs; [
+        baseDeps = with pkgs; [
           neovim
           git
           ripgrep
@@ -19,6 +19,17 @@
           curl
           unzip
           gcc
+        ];
+
+        lspDeps = with pkgs; [
+          lua-language-server
+          stylua
+          basedpyright
+          ruff
+          typescript-language-server
+          vue-language-server
+          nil
+          nixd
         ];
 
         nvim-config = pkgs.stdenvNoCC.mkDerivation {
@@ -35,7 +46,7 @@
 
         nvim = pkgs.writeShellApplication {
           name = "nvim";
-          runtimeInputs = runtimeDeps;
+          runtimeInputs = baseDeps ++ lspDeps;
           text = ''
             export XDG_CONFIG_HOME="${nvim-config}"
             exec nvim "$@"
