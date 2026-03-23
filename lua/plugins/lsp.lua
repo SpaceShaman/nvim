@@ -15,14 +15,6 @@ return {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
     dependencies = {
-      {
-        'mason-org/mason.nvim',
-        opts = {
-          PATH = 'skip',
-        },
-      },
-      'mason-org/mason-lspconfig.nvim',
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
       -- Useful status updates for LSP.
       { 'j-hui/fidget.nvim', opts = {} },
       -- Allows extra capabilities provided by blink.cmp
@@ -156,8 +148,6 @@ return {
 
       local capabilities = require('blink.cmp').get_lsp_capabilities()
       local servers = require 'lsp_servers'
-      require('mason-tool-installer').setup { ensure_installed = vim.tbl_keys(servers) }
-      require('mason-lspconfig').setup()
 
       for name, cfg in pairs(servers) do
         cfg.capabilities = vim.tbl_deep_extend('force', {}, capabilities, cfg.capabilities or {})

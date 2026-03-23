@@ -23,13 +23,17 @@
 
         lspDeps = with pkgs; [
           lua-language-server
-          stylua
-          basedpyright
           ruff
+          ty
           typescript-language-server
+          tailwindcss-language-server
           vue-language-server
-          nil
-          nixd
+          elixir-ls
+          dockerfile-language-server-nodejs
+          docker-compose-language-service
+          stylua
+          prettier
+          tombi
         ];
 
         runtimeDeps = baseDeps ++ lspDeps;
