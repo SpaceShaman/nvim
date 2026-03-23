@@ -29,7 +29,7 @@
           tailwindcss-language-server
           vue-language-server
           elixir-ls
-          dockerfile-language-server-nodejs
+          dockerfile-language-server
           docker-compose-language-service
           stylua
           prettier
