@@ -21,19 +21,23 @@
           gcc
         ];
 
+        nvim-config = pkgs.stdenvNoCC.mkDerivation {
+          name = "nvim-config";
+          src = ./.;
+
+          installPhase = ''
+            mkdir -p $out/nvim
+            cp ${./init.lua} $out/nvim/init.lua
+            cp ${./lazy-lock.json} $out/nvim/lazy-lock.json
+            cp -r ${./lua} $out/nvim/lua
+          '';
+        };
+
         nvim = pkgs.writeShellApplication {
           name = "nvim";
           runtimeInputs = runtimeDeps;
           text = ''
-            XDG_CONFIG_HOME="$(mktemp -d)"
-            export XDG_CONFIG_HOME
-
-            mkdir -p "$XDG_CONFIG_HOME/nvim"
-
-            cp ${./init.lua} "$XDG_CONFIG_HOME/nvim/init.lua"
-            cp ${./lazy-lock.json} "$XDG_CONFIG_HOME/nvim/lazy-lock.json"
-            cp -r ${./lua} "$XDG_CONFIG_HOME/nvim/lua"
-
+            export XDG_CONFIG_HOME="${nvim-config}"
             exec nvim "$@"
           '';
         };
