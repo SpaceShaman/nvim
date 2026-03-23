@@ -38,8 +38,6 @@
 
         runtimeDeps = baseDeps ++ lspDeps;
 
-        vueTsPluginPath = "${pkgs.vue-language-server}/lib/node_modules/@vue/language-server";
-
         nvim-config = pkgs.stdenvNoCC.mkDerivation {
           name = "nvim-config";
           src = ./.;
@@ -58,7 +56,6 @@
           text = ''
             export XDG_CONFIG_HOME="${nvim-config}"
             export PATH="${pkgs.lib.makeBinPath runtimeDeps}"
-            export VUE_TS_PLUGIN_PATH="${vueTsPluginPath}"
             exec nvim "$@"
           '';
         };

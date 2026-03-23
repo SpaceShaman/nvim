@@ -15,9 +15,10 @@ return {
       plugins = {
         {
           name = '@vue/typescript-plugin',
-          location = vim.env.VUE_TS_PLUGIN_PATH,
+          location = vim.fn.exepath 'vue-language-server',
           languages = { 'vue' },
           configNamespace = 'typescript',
+          enableForWorkspaceTypeScriptVersions = true,
         },
       },
     },
