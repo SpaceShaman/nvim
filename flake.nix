@@ -32,6 +32,8 @@
           nixd
         ];
 
+        runtimeDeps = baseDeps ++ lspDeps;
+
         nvim-config = pkgs.stdenvNoCC.mkDerivation {
           name = "nvim-config";
           src = ./.;
@@ -49,6 +51,7 @@
           runtimeInputs = baseDeps ++ lspDeps;
           text = ''
             export XDG_CONFIG_HOME="${nvim-config}"
+            export PATH="${pkgs.lib.makeBinPath runtimeDeps}"
             exec nvim "$@"
           '';
         };
