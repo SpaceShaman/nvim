@@ -11,7 +11,7 @@
       let
         pkgs = import nixpkgs { inherit system; };
 
-        baseDeps = with pkgs; [
+        deps = with pkgs; [
           neovim
           git
           ripgrep
@@ -19,9 +19,11 @@
           curl
           unzip
           gcc
+          lazygit
+          fish
         ];
 
-        lspDeps = with pkgs; [
+        lsp = with pkgs; [
           lua-language-server
           ruff
           ty
@@ -36,7 +38,9 @@
           tombi
         ];
 
-        runtimeDeps = baseDeps ++ lspDeps;
+
+
+        runtimeDeps = deps ++ lsp;
 
         nvim-config = pkgs.stdenvNoCC.mkDerivation {
           name = "nvim-config";
@@ -52,7 +56,7 @@
 
         nvim = pkgs.writeShellApplication {
           name = "nvim";
-          runtimeInputs = baseDeps ++ lspDeps;
+          runtimeInputs = deps ++ lsp;
           text = ''
             export XDG_CONFIG_HOME="${nvim-config}"
             export PATH="${pkgs.lib.makeBinPath runtimeDeps}"

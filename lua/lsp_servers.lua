@@ -18,7 +18,6 @@ return {
           location = vim.fn.exepath 'vue-language-server',
           languages = { 'vue' },
           configNamespace = 'typescript',
-          enableForWorkspaceTypeScriptVersions = true,
         },
       },
     },
