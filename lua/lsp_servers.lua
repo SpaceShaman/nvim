@@ -15,7 +15,7 @@ return {
       plugins = {
         {
           name = '@vue/typescript-plugin',
-          location = vim.fn.expand '$MASON/packages/vue-language-server/node_modules/@vue/language-server',
+          location = vim.env.VUE_TS_PLUGIN_PATH,
           languages = { 'vue' },
           configNamespace = 'typescript',
         },
@@ -24,12 +24,9 @@ return {
     filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
   },
   tailwindcss = {},
-  stylua = {}, -- Used to format Lua code
-  prettier = {},
   vue_ls = {},
   -- expert = {},
   elixirls = {},
-  tombi = {},
   dockerls = {},
   docker_compose_language_service = {
     filetypes = { 'yaml', 'docker-compose' },
