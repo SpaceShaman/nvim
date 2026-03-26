@@ -10,6 +10,12 @@ return {
           enabled = true,
           backend = 'tmux',
         },
+        tools = {
+          -- copilot CLI uses ANSI cursor-positioning codes that break the
+          -- tmux capture-pane based scrollback (only window height visible).
+          -- native_scroll lets neovim's terminal buffer handle history instead.
+          copilot = { native_scroll = true },
+        },
       },
     }
     map('n', '<Tab>', function()
