@@ -58,9 +58,7 @@
           name = "nvim";
           runtimeInputs = deps ++ lsp;
           text = ''
-            export XDG_CONFIG_HOME="${nvim-config}"
-            export PATH="${pkgs.lib.makeBinPath runtimeDeps}"
-            exec nvim "$@"
+            exec nvim -u "${nvim-config}/nvim/init.lua" "$@"
           '';
         };
       in {
