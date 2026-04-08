@@ -23,6 +23,13 @@ vim.opt.sessionoptions = {
 
 vim.opt.laststatus = 3
 
+-- Set the shada file to be unique per workspace, so that marks, registers, etc. are not shared between different projects.
+local workspace_path = vim.fn.getcwd()
+local cache_dir = vim.fn.stdpath 'data'
+local unique_id = vim.fn.fnamemodify(workspace_path, ':t') .. '_' .. vim.fn.sha256(workspace_path):sub(1, 8) ---@type string
+local shadafile = cache_dir .. '/myshada/' .. unique_id .. '.shada'
+vim.opt.shadafile = shadafile
+
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
 -- Don't show the mode, since it's already in the status line
