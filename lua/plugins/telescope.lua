@@ -59,7 +59,9 @@ return {
     keymap('n', '<leader>sb', telescope.buffers, { desc = '[S]earch [B]uffers' })
     keymap('n', '<leader>s.', telescope.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
     keymap('n', '<leader>.', telescope.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-    keymap('n', '<leader><leader>', telescope.marks, { desc = '[S]earch [M]arks' })
+    keymap('n', '<leader><leader>', function()
+      telescope.marks { mark_type = 'global' }
+    end, { desc = '[S]earch [M]arks' })
 
     keymap('n', '<leader>/', function()
       telescope.current_buffer_fuzzy_find()
