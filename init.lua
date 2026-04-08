@@ -1,6 +1,7 @@
 -- See `:h vim.o`
 --  For more options, you can see `:h option-list`
 require 'keymaps'()
+require 'marks'()
 
 vim.g.copilot_no_tab_map = true
 vim.o.number = true
@@ -22,13 +23,6 @@ vim.opt.sessionoptions = {
 }
 
 vim.opt.laststatus = 3
-
--- Set the shada file to be unique per workspace, so that marks, registers, etc. are not shared between different projects.
-local workspace_path = vim.fn.getcwd()
-local cache_dir = vim.fn.stdpath 'data'
-local unique_id = vim.fn.fnamemodify(workspace_path, ':t') .. '_' .. vim.fn.sha256(workspace_path):sub(1, 8) ---@type string
-local shadafile = cache_dir .. '/myshada/' .. unique_id .. '.shada'
-vim.opt.shadafile = shadafile
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
@@ -107,28 +101,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.hl.on_yank()
   end,
 })
-
--- Remaps Vim mark commands so that lowercase marks behave as global.
--- Normally, 'a–z' marks are buffer-local and 'A–Z' marks are global.
--- With this mapping:
---   - typing `ma` will actually set the global mark `A`
---   - jumping with `'a` or `` `a `` will go to the global `A` mark
--- Non-letter marks (like `m1`, `m/`) remain unchanged.
--- This ensures all user-defined marks act globally across buffers.
-local function upper_if_lower(c)
-  return (c:match '%l' and c:upper()) or c
-end
-
-local function map_mark_prefix(prefix)
-  vim.keymap.set('n', prefix, function()
-    local c = vim.fn.getcharstr()
-    return prefix .. upper_if_lower(c)
-  end, { expr = true, noremap = true })
-end
-
-map_mark_prefix 'm'
-map_mark_prefix "'"
-map_mark_prefix '`'
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
