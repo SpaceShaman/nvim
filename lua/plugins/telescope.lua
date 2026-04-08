@@ -56,13 +56,13 @@ return {
     keymap('n', '<leader>sg', telescope.live_grep, { desc = '[S]earch by [G]rep' })
     keymap('n', '<leader>sd', telescope.diagnostics, { desc = '[S]earch [D]iagnostics' })
     keymap('n', '<leader>sr', telescope.resume, { desc = '[S]earch [R]esume' })
+    keymap('n', '<leader>sb', telescope.buffers, { desc = '[S]earch [B]uffers' })
     keymap('n', '<leader>s.', telescope.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
     keymap('n', '<leader>.', telescope.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-    keymap('n', '<leader><leader>', telescope.buffers, { desc = '[ ] Find existing buffers' })
+    keymap('n', '<leader><leader>', telescope.marks, { desc = '[S]earch [M]arks' })
 
     keymap('n', '<leader>/', function()
-      -- You can pass additional configuration to Telescope to change the theme, layout, etc.
-      telescope.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown())
+      telescope.current_buffer_fuzzy_find()
     end, { desc = '[/] Fuzzily search in current buffer' })
 
     keymap('n', '<leader>s/', function()
