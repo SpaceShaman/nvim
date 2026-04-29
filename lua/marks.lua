@@ -67,35 +67,35 @@ local function setup_global_mark_navigation()
   end)
 end
 
+local function next_free_mark()
+  local cur_bufnr = vim.fn.bufnr '%'
+  local cur_file = vim.fn.fnamemodify(vim.fn.expand '%:p', ':p')
+  local cur_line = vim.fn.line '.'
+  local used = {}
+
+  for _, mark in ipairs(vim.fn.getmarklist()) do
+    local name = mark.mark:sub(2, 2)
+    if name:match '%u' then
+      local same = (mark.pos[1] ~= 0 and mark.pos[1] == cur_bufnr) or (mark.file ~= '' and vim.fn.fnamemodify(mark.file, ':p') == cur_file)
+      if same and mark.pos[2] == cur_line then
+        return nil -- mark already exists on this line
+      end
+      used[name] = true
+    end
+  end
+
+  for byte = string.byte 'A', string.byte 'Z' do
+    local name = string.char(byte)
+    if not used[name] then
+      return name
+    end
+  end
+  return nil -- all A–Z occupied
+end
+
 return function()
   set_workspace_shadafile()
   setup_global_mark_navigation()
-
-  local function next_free_mark()
-    local cur_bufnr = vim.fn.bufnr '%'
-    local cur_file = vim.fn.fnamemodify(vim.fn.expand '%:p', ':p')
-    local cur_line = vim.fn.line '.'
-    local used = {}
-
-    for _, mark in ipairs(vim.fn.getmarklist()) do
-      local name = mark.mark:sub(2, 2)
-      if name:match '%u' then
-        local same = (mark.pos[1] ~= 0 and mark.pos[1] == cur_bufnr) or (mark.file ~= '' and vim.fn.fnamemodify(mark.file, ':p') == cur_file)
-        if same and mark.pos[2] == cur_line then
-          return nil -- mark already exists on this line
-        end
-        used[name] = true
-      end
-    end
-
-    for byte = string.byte 'A', string.byte 'Z' do
-      local name = string.char(byte)
-      if not used[name] then
-        return name
-      end
-    end
-    return nil -- all A–Z occupied
-  end
 
   vim.keymap.set('n', 'm', function()
     local c = vim.fn.getcharstr()
@@ -110,5 +110,5 @@ return function()
     else
       vim.fn.feedkeys('m' .. c, 'n')
     end
-  end, { noremap = true })
+  end, { desc = 'Set next free mark on current line', noremap = true })
 end
