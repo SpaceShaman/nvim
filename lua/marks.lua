@@ -1,4 +1,4 @@
-local function set_workspace_shadafile()
+local function save_marks_per_workspace()
   local workspace_path = vim.fn.getcwd()
   local cache_dir = vim.fn.stdpath 'data'
   local unique_id = vim.fn.fnamemodify(workspace_path, ':t') .. '_' .. vim.fn.sha256(workspace_path):sub(1, 8) ---@type string
@@ -102,7 +102,7 @@ local function is_mark_exists_on_line()
 end
 
 return function()
-  set_workspace_shadafile()
+  save_marks_per_workspace()
   setup_global_mark_navigation()
 
   vim.keymap.set('n', 'm', function()
