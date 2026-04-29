@@ -61,10 +61,10 @@ local function setup_global_mark_navigation()
     end
   end)
 
-  vim.keymap.set('n', 'Dm', function()
+  vim.keymap.set('n', '<Leader>dm', function()
     vim.cmd 'delmarks A-Z'
     vim.notify('All marks deleted', vim.log.levels.WARN)
-  end)
+  end, { desc = 'Delete all marks (A–Z)', noremap = true, nowait = true })
 end
 
 local function next_free_mark()
@@ -72,9 +72,7 @@ local function next_free_mark()
 
   for _, mark in ipairs(vim.fn.getmarklist()) do
     local name = mark.mark:sub(2, 2)
-    if name:match '%u' then
-      used[name] = true
-    end
+    used[name] = true
   end
 
   for byte = string.byte 'A', string.byte 'Z' do
@@ -108,21 +106,16 @@ return function()
   setup_global_mark_navigation()
 
   vim.keymap.set('n', 'm', function()
-    local c = vim.fn.getcharstr()
     if is_mark_exists_on_line() then
-      vim.notify('Mark already added: ' .. string.upper(c), vim.log.levels.WARN)
+      vim.notify('Mark already added', vim.log.levels.WARN)
       return
     end
-    if c:match '%l' then
-      local mark = next_free_mark()
-      if mark then
-        vim.cmd('mark ' .. mark)
-        vim.notify('Mark added: ' .. mark, vim.log.levels.WARN)
-      else
-        vim.notify('No free mark (A–Z) or line already marked', vim.log.levels.WARN)
-      end
+    local mark = next_free_mark()
+    if mark then
+      vim.cmd('mark ' .. mark)
+      vim.notify('Mark added: ' .. mark, vim.log.levels.WARN)
     else
-      vim.fn.feedkeys('m' .. c, 'n')
+      vim.notify('No free mark (A–Z) or line already marked', vim.log.levels.WARN)
     end
   end, { desc = 'Set next free mark on current line', noremap = true })
 end
