@@ -6,67 +6,6 @@ local function set_workspace_shadafile()
   vim.opt.shadafile = shadafile
 end
 
-local function remap_lowercase_marks_to_global()
-  -- For `m` + lowercase: auto-assign the next free global mark (A–Z),
-  -- skipping if the current file+line already has a global mark.
-  -- For `'`/`` ` `` + lowercase: jump to the corresponding uppercase mark.
-  -- Non-letter marks (e.g. `m1`, `m/`) pass through unchanged.
-  local function next_free_mark()
-    local cur_bufnr = vim.fn.bufnr '%'
-    local cur_file = vim.fn.fnamemodify(vim.fn.expand '%:p', ':p')
-    local cur_line = vim.fn.line '.'
-    local used = {}
-
-    for _, mark in ipairs(vim.fn.getmarklist()) do
-      local name = mark.mark:sub(2, 2)
-      if name:match '%u' then
-        local same = (mark.pos[1] ~= 0 and mark.pos[1] == cur_bufnr) or (mark.file ~= '' and vim.fn.fnamemodify(mark.file, ':p') == cur_file)
-        if same and mark.pos[2] == cur_line then
-          return nil -- mark already exists on this line
-        end
-        used[name] = true
-      end
-    end
-
-    for byte = string.byte 'A', string.byte 'Z' do
-      local name = string.char(byte)
-      if not used[name] then
-        return name
-      end
-    end
-    return nil -- all A–Z occupied
-  end
-
-  vim.keymap.set('n', 'm', function()
-    local c = vim.fn.getcharstr()
-    if c:match '%l' then
-      local mark = next_free_mark()
-      if mark then
-        vim.cmd('mark ' .. mark)
-        vim.notify('Mark added: ' .. mark, vim.log.levels.INFO)
-      else
-        vim.notify('No free mark (A–Z) or line already marked', vim.log.levels.WARN)
-      end
-    else
-      vim.fn.feedkeys('m' .. c, 'n')
-    end
-  end, { noremap = true })
-
-  local function upper_if_lower(c)
-    return (c:match '%l' and c:upper()) or c
-  end
-
-  local function map_jump_prefix(prefix)
-    vim.keymap.set('n', prefix, function()
-      local c = vim.fn.getcharstr()
-      return prefix .. upper_if_lower(c)
-    end, { expr = true, noremap = true })
-  end
-
-  map_jump_prefix "'"
-  map_jump_prefix '`'
-end
-
 local function setup_global_mark_navigation()
   local marks = {}
   local idx = 0
@@ -129,7 +68,47 @@ local function setup_global_mark_navigation()
 end
 
 return function()
-  remap_lowercase_marks_to_global()
   set_workspace_shadafile()
   setup_global_mark_navigation()
+
+  local function next_free_mark()
+    local cur_bufnr = vim.fn.bufnr '%'
+    local cur_file = vim.fn.fnamemodify(vim.fn.expand '%:p', ':p')
+    local cur_line = vim.fn.line '.'
+    local used = {}
+
+    for _, mark in ipairs(vim.fn.getmarklist()) do
+      local name = mark.mark:sub(2, 2)
+      if name:match '%u' then
+        local same = (mark.pos[1] ~= 0 and mark.pos[1] == cur_bufnr) or (mark.file ~= '' and vim.fn.fnamemodify(mark.file, ':p') == cur_file)
+        if same and mark.pos[2] == cur_line then
+          return nil -- mark already exists on this line
+        end
+        used[name] = true
+      end
+    end
+
+    for byte = string.byte 'A', string.byte 'Z' do
+      local name = string.char(byte)
+      if not used[name] then
+        return name
+      end
+    end
+    return nil -- all A–Z occupied
+  end
+
+  vim.keymap.set('n', 'm', function()
+    local c = vim.fn.getcharstr()
+    if c:match '%l' then
+      local mark = next_free_mark()
+      if mark then
+        vim.cmd('mark ' .. mark)
+        vim.notify('Mark added: ' .. mark, vim.log.levels.INFO)
+      else
+        vim.notify('No free mark (A–Z) or line already marked', vim.log.levels.WARN)
+      end
+    else
+      vim.fn.feedkeys('m' .. c, 'n')
+    end
+  end, { noremap = true })
 end
