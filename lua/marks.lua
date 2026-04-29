@@ -59,12 +59,12 @@ local function setup_global_mark_navigation()
     if #deleted > 0 then
       vim.notify('Deleted mark: ' .. table.concat(deleted, ', '), vim.log.levels.WARN)
     end
-  end)
+  end, { desc = 'Delete marks on current line' })
 
   vim.keymap.set('n', '<Leader>dm', function()
     vim.cmd 'delmarks A-Z'
     vim.notify('All marks deleted', vim.log.levels.WARN)
-  end, { desc = 'Delete all marks (A–Z)', noremap = true, nowait = true })
+  end, { desc = 'Delete all marks (A–Z)' })
 end
 
 local function next_free_mark()
@@ -115,7 +115,7 @@ return function()
       vim.cmd('mark ' .. mark)
       vim.notify('Mark added: ' .. mark, vim.log.levels.WARN)
     else
-      vim.notify('No free mark (A–Z) or line already marked', vim.log.levels.WARN)
+      vim.notify('No free mark (A–Z)', vim.log.levels.WARN)
     end
   end, { desc = 'Set next free mark on current line', noremap = true })
 end
