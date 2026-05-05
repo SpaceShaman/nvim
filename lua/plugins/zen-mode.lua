@@ -41,6 +41,7 @@ return {
       initialized = true
       vim.api.nvim_create_autocmd('BufEnter', { callback = check_zen })
       vim.api.nvim_create_autocmd('BufDelete', { callback = check_zen })
+      vim.api.nvim_create_autocmd('WinClosed', { callback = check_zen })
       check_zen()
     end
 
