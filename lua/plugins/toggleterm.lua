@@ -11,8 +11,10 @@ return {
     }
 
     local function smart_toggle()
-      local dir = require('zen-mode.view').is_open() and 'float' or 'horizontal'
-      vim.cmd('ToggleTerm direction=' .. dir)
+      if require('zen-mode.view').is_open() then
+        require('zen-mode').close()
+      end
+      vim.cmd 'ToggleTerm direction=horizontal'
     end
     local Terminal = require('toggleterm.terminal').Terminal
     local lazygit = Terminal:new {
