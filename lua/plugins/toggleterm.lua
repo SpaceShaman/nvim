@@ -10,11 +10,12 @@ return {
       insert_mappings = false,
     }
 
-    local function smart_toggle()
+    local function smart_toggle(id)
       if require('zen-mode.view').is_open() then
         require('zen-mode').close()
       end
-      vim.cmd 'ToggleTerm direction=horizontal'
+      local cmd = id and ('ToggleTerm ' .. id .. ' direction=horizontal') or 'ToggleTerm direction=horizontal'
+      vim.cmd(cmd)
     end
     local Terminal = require('toggleterm.terminal').Terminal
     local lazygit = Terminal:new {
@@ -43,6 +44,14 @@ return {
     keymap('t', '<A-t>', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
     keymap('n', '<A-t>', smart_toggle, { desc = 'Toggle terminal' })
     keymap('n', '<leader>t', smart_toggle, { desc = 'Toggle terminal' })
+    for i = 1, 9 do
+      keymap('n', i .. '<leader>t', function()
+        smart_toggle(i)
+      end, { desc = 'Toggle terminal ' .. i })
+      keymap('n', i .. '<A-t>', function()
+        smart_toggle(i)
+      end, { desc = 'Toggle terminal ' .. i })
+    end
     keymap('n', '<leader>g', '<cmd>lua _lazygit_toggle()<CR>', { desc = 'Lazygit', noremap = true, silent = true })
   end,
 }
