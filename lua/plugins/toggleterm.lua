@@ -30,14 +30,10 @@ return {
         vim.api.nvim_buf_set_keymap(term.bufnr, 't', '<esc>', '<esc>', { noremap = true, silent = true })
         vim.api.nvim_buf_set_keymap(term.bufnr, 'n', 'q', '<cmd>close<CR>', { noremap = true, silent = true })
       end,
-      on_close = function(term)
+      on_close = function()
         vim.cmd 'startinsert!'
       end,
     }
-
-    function _lazygit_toggle()
-      lazygit:toggle()
-    end
 
     local keymap = vim.keymap.set
 
@@ -52,6 +48,8 @@ return {
         smart_toggle(i)
       end, { desc = 'Toggle terminal ' .. i })
     end
-    keymap('n', '<leader>g', '<cmd>lua _lazygit_toggle()<CR>', { desc = 'Lazygit', noremap = true, silent = true })
+    keymap('n', '<leader>g', function()
+      lazygit:toggle()
+    end, { desc = 'Lazygit', noremap = true, silent = true })
   end,
 }
