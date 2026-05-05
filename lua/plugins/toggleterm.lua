@@ -3,12 +3,17 @@ return {
   version = '*',
   config = function()
     require('toggleterm').setup {
-      open_mapping = '<A-t>',
+      open_mapping = false,
       autochdir = true,
       shell = 'fish',
       terminal_mappings = false,
       insert_mappings = false,
     }
+
+    local function smart_toggle()
+      local dir = require('zen-mode.view').is_open() and 'float' or 'horizontal'
+      vim.cmd('ToggleTerm direction=' .. dir)
+    end
     local Terminal = require('toggleterm.terminal').Terminal
     local lazygit = Terminal:new {
       cmd = 'lazygit',
@@ -34,7 +39,8 @@ return {
     local keymap = vim.keymap.set
 
     keymap('t', '<A-t>', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
-    keymap('n', '<leader>t', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
+    keymap('n', '<A-t>', smart_toggle, { desc = 'Toggle terminal' })
+    keymap('n', '<leader>t', smart_toggle, { desc = 'Toggle terminal' })
     keymap('n', '<leader>g', '<cmd>lua _lazygit_toggle()<CR>', { desc = 'Lazygit', noremap = true, silent = true })
   end,
 }

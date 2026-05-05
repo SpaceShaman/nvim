@@ -10,6 +10,7 @@ return {
     }
     vim.api.nvim_create_autocmd({ 'BufEnter', 'BufRead', 'BufNewFile' }, {
       callback = function(args)
+        if not vim.api.nvim_buf_is_valid(args.buf) then return end
         local name = vim.api.nvim_buf_get_name(args.buf)
         local tail = vim.fn.fnamemodify(name, ':t')
         if tail == 'copilot-chat' then
