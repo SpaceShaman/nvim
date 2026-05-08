@@ -59,7 +59,7 @@ return {
       vim.api.nvim_create_autocmd('BufWinEnter', {
         callback = function(args)
           local ft = vim.bo[args.buf].filetype
-          if ft:match '^neotest%-' and view.is_open() then
+          if (ft:match '^neotest%-' or ft:match '^dapui' or ft == 'dap-repl') and view.is_open() then
             require('zen-mode').close()
           end
         end,
