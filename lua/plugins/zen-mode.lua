@@ -56,6 +56,14 @@ return {
       vim.api.nvim_create_autocmd('BufEnter', { callback = sync_parent_buf })
       vim.api.nvim_create_autocmd('WinClosed', { callback = check_zen })
       vim.api.nvim_create_autocmd('BufDelete', { callback = check_zen })
+      vim.api.nvim_create_autocmd('BufWinEnter', {
+        callback = function(args)
+          local ft = vim.bo[args.buf].filetype
+          if ft:match '^neotest%-' and view.is_open() then
+            require('zen-mode').close()
+          end
+        end,
+      })
       check_zen()
     end
 
