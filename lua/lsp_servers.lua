@@ -10,6 +10,21 @@ return {
   },
   ruff = {}, -- Python linter and formatter backed by Astral
   ty = {}, -- Python type checker and language server, backed by Astral
+  basedpyright = {
+    handlers = {
+      -- disable all diagnostics from basedpyright (handled by ruff + ty)
+      ['textDocument/publishDiagnostics'] = function() end,
+    },
+    settings = {
+      basedpyright = {
+        analysis = {
+          typeCheckingMode = 'off', -- type checking handled by ty
+          autoSearchPaths = true,
+          useLibraryCodeForTypes = true,
+        },
+      },
+    },
+  }, -- Python completion and import suggestions
   ts_ls = {
     init_options = {
       plugins = {
