@@ -1,6 +1,7 @@
 return {
   -- dir = '~/Dev/multicursor.nvim',
   'jake-stewart/multicursor.nvim',
+  commit = '704b99f10a72cc05d370cfeb294ff83412a8ab55',
   branch = '1.0',
   config = function()
     local mc = require 'multicursor-nvim'

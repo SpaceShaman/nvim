@@ -1,6 +1,7 @@
 return {
   'Shatur/neovim-ayu',
   -- dir = '~/Dev/neovim-ayu',
+  commit = 'e5a9f0fa2918d6b5f57c21b3ac014314ee5e41c8',
   priority = 1000, -- Make sure to load this before all the other start plugins.
   config = function()
     local colors = require 'ayu.colors'

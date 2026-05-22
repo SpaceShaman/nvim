@@ -1,11 +1,13 @@
 return { -- Autocompletion
   'saghen/blink.cmp',
+  commit = '451168851e8e2466bc97ee3e026c3dcb9141ce07',
   event = 'VimEnter',
   version = '1.*',
   dependencies = {
     -- Snippet Engine
     {
       'L3MON4D3/LuaSnip',
+      commit = '5a1e39223db9a0498024a77b8441169d260c8c25',
       version = '2.*',
       build = (function()
         return 'make install_jsregexp'
@@ -16,6 +18,7 @@ return { -- Autocompletion
         --    https://github.com/rafamadriz/friendly-snippets
         {
           'rafamadriz/friendly-snippets',
+          commit = '6cd7280adead7f586db6fccbd15d2cac7e2188b9',
           config = function()
             require('luasnip.loaders.from_vscode').lazy_load()
           end,
@@ -23,7 +26,7 @@ return { -- Autocompletion
       },
       opts = {},
     },
-    'folke/lazydev.nvim',
+    { 'folke/lazydev.nvim', commit = 'ff2cbcba459b637ec3fd165a2be59b7bbaeedf0d' },
   },
   --- @module 'blink.cmp'
   --- @type blink.cmp.Config

@@ -1,5 +1,6 @@
 return {
   'nvim-zh/colorful-winsep.nvim',
+  commit = '84432d9966fafaa08dd9040c98b0011045d8e964',
   event = { 'WinLeave' },
   config = function()
     local file = io.open(vim.fn.expand '~/.config/theme', 'r')

@@ -1,10 +1,11 @@
 return {
   'nvim-treesitter/nvim-treesitter',
+  commit = '6620ae1c44dfa8623b22d0cbf873a9e8d073b849',
   lazy = false,
   build = ':TSUpdate',
   dependencies = {
-    'nvim-treesitter/nvim-treesitter-context',
-    'RRethy/nvim-treesitter-endwise',
+    { 'nvim-treesitter/nvim-treesitter-context', commit = 'adf4b6b0420b7be6c717ef0ac7993183d6c201b1' },
+    { 'RRethy/nvim-treesitter-endwise', commit = '8fe8a95630f4f2c72a87ba1927af649e0bfaa244' },
   },
   config = function()
     local languages = {

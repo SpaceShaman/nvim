@@ -3,6 +3,7 @@ return {
     -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
     -- used for completion, annotations and signatures of Neovim apis
     'folke/lazydev.nvim',
+    commit = 'ff2cbcba459b637ec3fd165a2be59b7bbaeedf0d',
     ft = 'lua',
     opts = {
       library = {
@@ -14,14 +15,13 @@ return {
   {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
+    commit = '1a6d69206749a646ef28bfb39460610b14baff40',
     dependencies = {
-      { 'mason-org/mason.nvim', opts = {} },
-      'mason-org/mason-lspconfig.nvim',
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
-      -- Useful status updates for LSP.
-      { 'j-hui/fidget.nvim', opts = {} },
-      -- Allows extra capabilities provided by blink.cmp
-      'saghen/blink.cmp',
+      { 'mason-org/mason.nvim', commit = '44d1e90e1f66e077268191e3ee9d2ac97cc18e65', opts = {} },
+      { 'mason-org/mason-lspconfig.nvim', commit = '38499e0bda64bc0f3ec6e7f03f8e13dd11c0fa00' },
+      { 'WhoIsSethDaniel/mason-tool-installer.nvim', commit = '443f1ef8b5e6bf47045cb2217b6f748a223cf7dc' },
+      { 'j-hui/fidget.nvim', commit = '7fa433a83118a70fe24c1ce88d5f0bd3453c0970', opts = {} },
+      { 'saghen/blink.cmp', commit = '451168851e8e2466bc97ee3e026c3dcb9141ce07' },
     },
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {

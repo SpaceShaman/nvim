@@ -1,17 +1,19 @@
 return {
   'nvim-telescope/telescope.nvim',
+  commit = '5255aa27c422de944791318024167ad5d40aad20',
   event = 'VimEnter',
   dependencies = {
-    'nvim-lua/plenary.nvim',
+    { 'nvim-lua/plenary.nvim', commit = 'b9fd5226c2f76c951fc8ed5923d85e4de065e509' },
     {
       'nvim-telescope/telescope-fzf-native.nvim',
+      commit = '6fea601bd2b694c6f2ae08a6c6fab14930c60e2c',
       build = 'make',
       cond = function()
         return vim.fn.executable 'make' == 1
       end,
     },
-    { 'nvim-telescope/telescope-ui-select.nvim' },
-    { 'nvim-tree/nvim-web-devicons' },
+    { 'nvim-telescope/telescope-ui-select.nvim', commit = '6e51d7da30bd139a6950adf2a47fda6df9fa06d2' },
+    { 'nvim-tree/nvim-web-devicons', commit = 'd7462543c9e366c0d196c7f67a945eaaf5d99414' },
   },
   config = function()
     -- Two important keymaps to use while in Telescope are:

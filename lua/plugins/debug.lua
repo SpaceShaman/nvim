@@ -1,8 +1,10 @@
 return {
   'mfussenegger/nvim-dap',
+  commit = '2a8799ad91a1495c6bdf753f9b2179b3ff0f5bba',
   dependencies = {
     {
       'rcarriga/nvim-dap-ui',
+      commit = 'f5b6673f374626515401c5bc51b005f784a4f252',
       opts = {
         icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
         controls = {
@@ -22,10 +24,10 @@ return {
         },
       },
     },
-    'nvim-neotest/nvim-nio',
-    'mason-org/mason.nvim',
-    'jay-babu/mason-nvim-dap.nvim',
-    'mfussenegger/nvim-dap-python',
+    { 'nvim-neotest/nvim-nio', commit = '21f5324bfac14e22ba26553caf69ec76ae8a7662' },
+    { 'mason-org/mason.nvim', commit = '44d1e90e1f66e077268191e3ee9d2ac97cc18e65' },
+    { 'jay-babu/mason-nvim-dap.nvim', commit = '9a10e096703966335bd5c46c8c875d5b0690dade' },
+    { 'mfussenegger/nvim-dap-python', commit = '1808458eba2b18f178f990e01376941a42c7f93b' },
   },
   keys = {
     {

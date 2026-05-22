@@ -1,5 +1,6 @@
 return {
   'uga-rosa/translate.nvim',
+  commit = '1a841e56407ba02e919ed9af573dbe531404aebb',
   config = function()
     require('translate').setup {
       default = {

@@ -1,5 +1,6 @@
 return {
   'github/copilot.vim',
+  commit = 'a12fd5672110c8aa7e3c8419e28c96943ca179be',
   config = function()
     local map = vim.keymap.set
     vim.g.copilot_no_tab_map = true

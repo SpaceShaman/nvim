@@ -1,5 +1,6 @@
 return {
   'folke/zen-mode.nvim',
+  commit = '8564ce6d29ec7554eb9df578efa882d33b3c23a7',
   config = function()
     require('zen-mode').setup {
       plugins = { options = { laststatus = 0 } },

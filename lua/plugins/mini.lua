@@ -1,5 +1,6 @@
 return { -- Collection of various small independent plugins/modules
   'echasnovski/mini.nvim',
+  commit = '439cdcd6992bc9012efd7d8ed7a7b7a0f1fac32a',
   config = function()
     -- Better Around/Inside textobjects
     --

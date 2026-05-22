@@ -1,5 +1,6 @@
 return {
   'echasnovski/mini.move',
+  commit = '4fe4a855fee53c66b0f3255a4b54ddc2ae6b308c',
   version = 'V0.16.0',
   opts = {
     mappings = {

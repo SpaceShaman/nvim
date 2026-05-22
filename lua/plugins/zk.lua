@@ -1,5 +1,6 @@
 return {
   'zk-org/zk-nvim',
+  commit = 'dea1ee6cd6d07568c92ea8353063d4d85c58a964',
   config = function()
     require('zk').setup {
       picker = 'telescope',
