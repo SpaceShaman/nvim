@@ -11,6 +11,10 @@ return {
   ruff = {}, -- Python linter and formatter backed by Astral
   ty = {}, -- Python type checker and language server, backed by Astral
   basedpyright = {
+    on_attach = function(client)
+      -- disable rename — handled by other LSPs to avoid double prompt
+      client.server_capabilities.renameProvider = false
+    end,
     handlers = {
       -- disable all diagnostics from basedpyright (handled by ruff + ty)
       ['textDocument/publishDiagnostics'] = function() end,
