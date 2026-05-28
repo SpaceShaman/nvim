@@ -1,6 +1,6 @@
 return {
   'folke/sidekick.nvim',
-  commit = '17447a05f9385e5f8372b61530f6f9329cb82421',
+  commit = '6b69c42',
   config = function()
     local map = vim.keymap.set
     local sidekick = require 'sidekick'
