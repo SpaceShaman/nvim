@@ -9,8 +9,18 @@ return {
     },
   },
   ruff = {}, -- Python linter and formatter backed by Astral
-  -- ty = {}, -- Python type checker and language server, backed by Astral
-  basedpyright = {}, -- Python completion and import suggestions
+  basedpyright = {
+    settings = {
+      basedpyright = {
+        disableOrganizeImports = true, -- Ruff ogarnia importy
+        analysis = {
+          autoSearchPaths = true,
+          typeCheckingMode = 'strict',
+          enableTypeIgnoreComments = true,
+        },
+      },
+    },
+  },
   ts_ls = {
     init_options = {
       plugins = {
