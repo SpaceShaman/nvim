@@ -11,9 +11,9 @@ return {
     }
 
     local function smart_toggle(id)
-      if require('zen-mode.view').is_open() then
-        require('zen-mode').close()
-      end
+      -- if require('zen-mode.view').is_open() then
+      --   require('zen-mode').close()
+      -- end
       local cmd = id and ('ToggleTerm ' .. id .. ' direction=horizontal') or 'ToggleTerm direction=horizontal'
       vim.cmd(cmd)
     end

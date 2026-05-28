@@ -42,6 +42,9 @@ return {
       if not (view.parent and vim.api.nvim_win_is_valid(view.parent)) then
         return
       end
+      if vim.api.nvim_get_current_win() ~= view.win then
+        return
+      end
       local buf = vim.api.nvim_win_get_buf(view.win)
       if vim.api.nvim_win_get_buf(view.parent) ~= buf then
         vim.api.nvim_win_set_buf(view.parent, buf)
