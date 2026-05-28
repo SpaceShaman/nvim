@@ -55,7 +55,17 @@ return {
       end
       initialized = true
       vim.api.nvim_create_autocmd('BufEnter', { callback = sync_parent_buf })
-      vim.api.nvim_create_autocmd('WinClosed', { callback = check_zen })
+      vim.api.nvim_create_autocmd('WinClosed', {
+        callback = function(ev)
+          if view.is_open() and tonumber(ev.match) == view.win and vim.fn.exists '#Zen' == 1 then
+            vim.schedule(function()
+              vim.cmd 'quit'
+            end)
+          else
+            check_zen()
+          end
+        end,
+      })
       vim.api.nvim_create_autocmd('BufDelete', { callback = check_zen })
       vim.api.nvim_create_autocmd('BufWinEnter', {
         callback = function(args)
