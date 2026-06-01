@@ -9,18 +9,7 @@ return {
     },
   },
   ruff = {}, -- Python linter and formatter backed by Astral
-  basedpyright = {
-    settings = {
-      basedpyright = {
-        disableOrganizeImports = true, -- Ruff ogarnia importy
-        analysis = {
-          autoSearchPaths = true,
-          typeCheckingMode = 'strict',
-          enableTypeIgnoreComments = true,
-        },
-      },
-    },
-  },
+  ty = {}, -- Python type checker backed by Astral
   ts_ls = {
     init_options = {
       plugins = {
