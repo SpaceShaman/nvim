@@ -1,6 +1,6 @@
 return {
   'shortcuts/no-neck-pain.nvim',
-  commit = '434fed70b1ee553f8f27e6da7b3899f71b3c6f99',
+  commit = '4bc52782524fd50c5658685d584df6fa48fe49f9',
   config = function()
     require('no-neck-pain').setup {
       autocmds = {
