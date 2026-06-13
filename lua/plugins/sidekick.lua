@@ -27,7 +27,7 @@ return {
     end, { expr = true })
 
     local toggle_cli = function()
-      sidekick_cli.toggle { name = 'copilot', focus = true }
+      sidekick_cli.toggle { name = 'codex', focus = true }
     end
 
     map('n', '<leader>i', toggle_cli, { desc = 'AI Toggle', silent = true })
