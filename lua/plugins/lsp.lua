@@ -21,7 +21,6 @@ return {
       { 'mason-org/mason-lspconfig.nvim', commit = '38499e0bda64bc0f3ec6e7f03f8e13dd11c0fa00' },
       { 'WhoIsSethDaniel/mason-tool-installer.nvim', commit = '443f1ef8b5e6bf47045cb2217b6f748a223cf7dc' },
       { 'j-hui/fidget.nvim', commit = '7fa433a83118a70fe24c1ce88d5f0bd3453c0970', opts = {} },
-      { 'saghen/blink.cmp', commit = '451168851e8e2466bc97ee3e026c3dcb9141ce07' },
     },
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
