@@ -5,24 +5,7 @@ return {
     {
       'rcarriga/nvim-dap-ui',
       commit = 'f5b6673f374626515401c5bc51b005f784a4f252',
-      opts = {
-        icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
-        controls = {
-          icons = {
-            pause = '⏸',
-            play = '▶',
-            step_into = '⏎',
-            step_over = '⏭',
-            step_out = '⏮',
-            step_back = 'b',
-            run_last = '▶▶',
-            terminate = '⏹',
-            disconnect = '⏏',
-          },
-          enabled = true,
-          element = 'repl',
-        },
-      },
+      opts = {},
     },
     { 'nvim-neotest/nvim-nio', commit = '21f5324bfac14e22ba26553caf69ec76ae8a7662' },
     { 'mason-org/mason.nvim', commit = '44d1e90e1f66e077268191e3ee9d2ac97cc18e65' },
