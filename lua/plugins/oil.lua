@@ -1,6 +1,6 @@
 return {
   'stevearc/oil.nvim',
-  commit = '0fcc83805ad11cf714a949c98c605ed717e0b83e',
+  commit = '17c0a8faaf48298a0c0cfb0d757c0eaee4ff7a32',
   ---@module 'oil'
   ---@type oil.SetupOpts
   dependencies = {
