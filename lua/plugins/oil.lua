@@ -3,12 +3,14 @@ return {
   commit = '0fcc83805ad11cf714a949c98c605ed717e0b83e',
   ---@module 'oil'
   ---@type oil.SetupOpts
-  dependencies = { { 'echasnovski/mini.icons', commit = '5b9076dae1bfbe47ba4a14bc8b967cde0ab5d77e', opts = {} } },
+  dependencies = {
+    { 'echasnovski/mini.icons', commit = '5b9076dae1bfbe47ba4a14bc8b967cde0ab5d77e' },
+    { 'malewicz1337/oil-git.nvim', commit = 'd153b6aa67f69fd80b43228ca899daec5602e652' },
+  },
   lazy = false,
   config = function()
     require('oil').setup {
       keymaps = {
-        ['<C-_>'] = { 'actions.show_help', mode = 'n' },
         ['<C-v>'] = { 'actions.select', opts = { vertical = true } },
       },
       view_options = {
