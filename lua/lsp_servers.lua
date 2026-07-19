@@ -35,4 +35,5 @@ return {
     filetypes = { 'yaml', 'docker-compose' },
     root_markers = { '*compose*.yaml', '*compose*.yml' },
   },
+  zls = {},
 }
