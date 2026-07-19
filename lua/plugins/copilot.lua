@@ -4,6 +4,9 @@ return {
   config = function()
     local map = vim.keymap.set
     vim.g.copilot_no_tab_map = true
+    vim.g.copilot_filetypes = {
+      zig = false,
+    }
 
     -- if a suggestion is visible -> copilot-next, otherwise -> copilot-suggest
     local function copilot_next_or_suggest()

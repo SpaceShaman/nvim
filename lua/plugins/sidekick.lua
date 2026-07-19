@@ -18,6 +18,11 @@ return {
           copilot = { native_scroll = true },
         },
       },
+      nes = {
+        enabled = function(buf)
+          return vim.bo[buf].filetype ~= 'zig'
+        end,
+      },
     }
     map('n', '<Tab>', function()
       -- if there is a next edit, jump to it, otherwise apply it if any
