@@ -35,5 +35,9 @@ return {
     filetypes = { 'yaml', 'docker-compose' },
     root_markers = { '*compose*.yaml', '*compose*.yml' },
   },
-  zls = {},
+  zls = {
+    settings = {
+      enable_build_on_save = true,
+    },
+  },
 }

@@ -2,6 +2,7 @@
 --  For more options, you can see `:h option-list`
 require 'keymaps'()
 require 'marks'()
+require 'zig'()
 
 vim.g.copilot_no_tab_map = true
 vim.o.number = true
