@@ -7,6 +7,7 @@ require 'zig'()
 vim.g.copilot_no_tab_map = true
 vim.o.number = true
 vim.o.relativenumber = true
+vim.opt.swapfile = false
 vim.g.have_nerd_font = true
 vim.opt.fillchars:append { eob = ' ' }
 vim.opt.cmdheight = 0
