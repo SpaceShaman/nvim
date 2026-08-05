@@ -6,6 +6,7 @@ return {
     vim.g.copilot_no_tab_map = true
     vim.g.copilot_filetypes = {
       zig = false,
+      glsl = false,
     }
 
     -- if a suggestion is visible -> copilot-next, otherwise -> copilot-suggest

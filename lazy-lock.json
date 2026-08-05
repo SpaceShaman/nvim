@@ -40,7 +40,6 @@
   "nvim-nio": { "branch": "master", "commit": "21f5324bfac14e22ba26553caf69ec76ae8a7662" },
   "nvim-puppeteer": { "branch": "main", "commit": "1c8d157d935fed345a52d8f2efaad468b77b2845" },
   "nvim-treesitter": { "branch": "main", "commit": "6620ae1c44dfa8623b22d0cbf873a9e8d073b849" },
-  "nvim-treesitter-context": { "branch": "master", "commit": "adf4b6b0420b7be6c717ef0ac7993183d6c201b1" },
   "nvim-treesitter-endwise": { "branch": "master", "commit": "8fe8a95630f4f2c72a87ba1927af649e0bfaa244" },
   "nvim-web-devicons": { "branch": "master", "commit": "d7462543c9e366c0d196c7f67a945eaaf5d99414" },
   "oil-git.nvim": { "branch": "main", "commit": "d153b6aa67f69fd80b43228ca899daec5602e652" },
@@ -56,5 +55,6 @@
   "translate.nvim": { "branch": "main", "commit": "1a841e56407ba02e919ed9af573dbe531404aebb" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
   "window-shuffler.nvim": { "branch": "master", "commit": "4e30f44744912b42f1fbff9427154052b1f52336" },
+  "zig.vim": { "branch": "master", "commit": "4842ab8cb1b000a9acb0a06170d404d12a154918" },
   "zk-nvim": { "branch": "main", "commit": "dea1ee6cd6d07568c92ea8353063d4d85c58a964" }
 }

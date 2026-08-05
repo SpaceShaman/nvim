@@ -40,5 +40,4 @@ return {
       enable_build_on_save = true,
     },
   },
-  harper_ls = {},
 }

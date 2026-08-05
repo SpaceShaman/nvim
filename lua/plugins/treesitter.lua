@@ -4,7 +4,7 @@ return {
   lazy = false,
   build = ':TSUpdate',
   dependencies = {
-    { 'nvim-treesitter/nvim-treesitter-context', commit = 'adf4b6b0420b7be6c717ef0ac7993183d6c201b1' },
+    -- { 'nvim-treesitter/nvim-treesitter-context', commit = 'adf4b6b0420b7be6c717ef0ac7993183d6c201b1' },
     { 'RRethy/nvim-treesitter-endwise', commit = '8fe8a95630f4f2c72a87ba1927af649e0bfaa244' },
   },
   config = function()
@@ -30,8 +30,6 @@ return {
       'typescript',
       'javascript',
       'json',
-      'zig',
-      -- 'dockerfile',
     }
     require('nvim-treesitter').install(languages)
 
