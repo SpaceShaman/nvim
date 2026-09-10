@@ -22,6 +22,7 @@ return {
           return name:match '^%.' or hidden_names[name]
         end,
       },
+      watch_for_changes = true,
     }
     -- Open Oil on startup when no file is opened
     vim.api.nvim_create_autocmd('VimEnter', {
