@@ -11,20 +11,22 @@ return {
             elements = {
               { id = 'scopes', size = 0.40 },
               { id = 'watches', size = 0.20 },
-              { id = 'stacks', size = 0.20 },
               { id = 'breakpoints', size = 0.20 },
+              { id = 'repl', size = 0.2 },
             },
             position = 'left',
             size = 40,
           },
           {
-            elements = { 'repl' },
+            elements = {
+              { id = 'console', size = 1 },
+            },
             position = 'bottom',
             size = 10,
           },
         },
         controls = {
-          element = 'scopes',
+          element = 'repl',
           enabled = true,
         },
       },
