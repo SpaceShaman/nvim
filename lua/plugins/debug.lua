@@ -5,7 +5,29 @@ return {
     {
       'rcarriga/nvim-dap-ui',
       commit = 'f5b6673f374626515401c5bc51b005f784a4f252',
-      opts = {},
+      opts = {
+        layouts = {
+          {
+            elements = {
+              { id = 'scopes', size = 0.40 },
+              { id = 'watches', size = 0.20 },
+              { id = 'stacks', size = 0.20 },
+              { id = 'breakpoints', size = 0.20 },
+            },
+            position = 'left',
+            size = 40,
+          },
+          {
+            elements = { 'repl' },
+            position = 'bottom',
+            size = 10,
+          },
+        },
+        controls = {
+          element = 'scopes',
+          enabled = true,
+        },
+      },
     },
     { 'nvim-neotest/nvim-nio', commit = '21f5324bfac14e22ba26553caf69ec76ae8a7662' },
     { 'mason-org/mason.nvim', commit = '44d1e90e1f66e077268191e3ee9d2ac97cc18e65' },
