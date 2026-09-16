@@ -21,7 +21,6 @@ vim.opt.sessionoptions = {
   'winsize',
   'winpos',
   'localoptions',
-  'blank',
 }
 
 vim.opt.laststatus = 3

@@ -13,10 +13,12 @@ return function()
   map('n', '<A-k>', '<C-w><Up>', { desc = 'Go to the upper window', noremap = true })
   map('n', '<A-l>', '<C-w><Right>', { desc = 'Go to the right window', noremap = true })
 
-  map('n', '<A-a>', '<cmd>vertical resize -2<CR>', { desc = 'Decrease window width', noremap = true })
-  map('n', '<A-s>', '<cmd>horizontal resize -2<CR>', { desc = 'Decrease window height', noremap = true })
-  map('n', '<A-d>', '<cmd>horizontal resize +2<CR>', { desc = 'Increase window height', noremap = true })
-  map('n', '<A-f>', '<cmd>vertical resize +2<CR>', { desc = 'Increase window width', noremap = true })
+  map({ 'n', 't' }, '<C-A-j>', '<cmd>vertical resize -2<CR>', { desc = 'Decrease window width', noremap = true })
+  map({ 'n', 't' }, '<C-A-k>', '<cmd>horizontal resize -2<CR>', { desc = 'Decrease window height', noremap = true })
+  map({ 'n', 't' }, '<C-A-l>', '<cmd>horizontal resize +2<CR>', { desc = 'Increase window height', noremap = true })
+  map({ 'n', 't' }, '<C-A-;>', '<cmd>vertical resize +2<CR>', { desc = 'Increase window width', noremap = true })
+
+  require('utils.langmap').translate_mapping({ 'n', 't' }, '<C-A-;>', ';', 'l')
 
   map({ 'i', 'c' }, '<M-BS>', '<C-w>', { desc = 'Delete previous word', noremap = true })
 
@@ -31,10 +33,6 @@ return function()
   map('t', '<A-j>', '<cmd>wincmd j<CR>', { desc = 'Go to the lower window', noremap = true })
   map('t', '<A-k>', '<cmd>wincmd k<CR>', { desc = 'Go to the upper window', noremap = true })
   map('t', '<A-l>', '<cmd>wincmd l<CR>', { desc = 'Go to the right window', noremap = true })
-  map('t', '<A-a>', '<cmd>vertical resize -2<CR>', { desc = 'Decrease window width', noremap = true })
-  map('t', '<A-s>', '<cmd>horizontal resize -2<CR>', { desc = 'Decrease window height', noremap = true })
-  map('t', '<A-d>', '<cmd>horizontal resize +2<CR>', { desc = 'Increase window height', noremap = true })
-  map('t', '<A-f>', '<cmd>vertical resize +2<CR>', { desc = 'Increase window width', noremap = true })
 
   -- Copy line Up/Down
   map('n', '<C-Down>', 'yyp', opts)
