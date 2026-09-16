@@ -20,6 +20,15 @@ return function()
 
   require('utils.langmap').translate_mapping({ 'n', 't' }, '<C-A-;>', ';', 'l')
 
+  map({ 'n', 't' }, '<A-s>', '<cmd>tabprevious<CR>', { desc = 'Go to the previous tab' })
+  map({ 'n', 't' }, '<A-d>', '<cmd>tabnext<CR>', { desc = 'Go to the next tab' })
+  map({ 'n', 't' }, '<A-S>', function()
+    require('utils.tabs').move_buffer(-1)
+  end, { desc = 'Move buffer to the previous tab' })
+  map({ 'n', 't' }, '<A-D>', function()
+    require('utils.tabs').move_buffer(1)
+  end, { desc = 'Move buffer to the next tab' })
+
   map({ 'i', 'c' }, '<M-BS>', '<C-w>', { desc = 'Delete previous word', noremap = true })
 
   map('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear highlights on search when pressing <Esc>' })
