@@ -32,8 +32,16 @@ return {
           return
         end
         vim.schedule(function()
-          local listed = vim.fn.getbufinfo { buflisted = 1 }
-          if #listed == 1 and listed[1].name == '' then
+          -- Sessions can restore unloaded buffer entries without opening a file.
+          for _, buf in ipairs(vim.fn.getbufinfo { buflisted = 1 }) do
+            if buf.changed == 1 or (buf.loaded == 1 and buf.name ~= '') then
+              return
+            end
+          end
+          if vim.fn.bufname() ~= '' or vim.bo.buftype ~= '' or vim.bo.modified then
+            return
+          end
+          if vim.fn.line '$' == 1 and vim.fn.getline(1) == '' then
             require('oil').open()
           end
         end)
