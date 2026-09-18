@@ -150,7 +150,7 @@ return {
 
       local capabilities = require('blink.cmp').get_lsp_capabilities()
       local servers = require 'lsp_servers'
-      require('mason-tool-installer').setup { ensure_installed = vim.tbl_keys(servers) }
+      require('mason-tool-installer').setup { ensure_installed = vim.list_extend(vim.tbl_keys(servers), { 'dockerfmt' }) }
       require('mason-lspconfig').setup()
 
       for name, cfg in pairs(servers) do
