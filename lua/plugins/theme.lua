@@ -4,7 +4,6 @@ return {
   commit = 'e5a9f0fa2918d6b5f57c21b3ac014314ee5e41c8',
   priority = 1000, -- Make sure to load this before all the other start plugins.
   config = function()
-    local colors = require 'ayu.colors'
     require('ayu').setup {
       overrides = {
         Normal = { bg = 'None' },
@@ -12,14 +11,29 @@ return {
         WinSeparator = { bg = 'None' },
       },
     }
-    local file = io.open(vim.fn.expand '~/.config/theme', 'r')
-    local variant = 'light'
-    if file then
-      variant = file:read '*l' or 'light'
-      file:close()
+
+    local schema = 'org.gnome.desktop.interface'
+    local key = 'color-scheme'
+
+    local function apply_theme(value)
+      local variant = value:find 'prefer%-light' and 'light' or 'dark'
+
+      vim.o.background = variant
+      vim.cmd.colorscheme('ayu-' .. variant)
     end
 
-    local theme = string.format('ayu-%s', variant)
-    vim.cmd.colorscheme(theme)
+    apply_theme(vim.fn.system { 'gsettings', 'get', schema, key })
+
+    vim.fn.jobstart({ 'gsettings', 'monitor', schema, key }, {
+      on_stdout = function(_, data)
+        local value = table.concat(data, '\n')
+
+        if value ~= '' then
+          vim.schedule(function()
+            apply_theme(value)
+          end)
+        end
+      end,
+    })
   end,
 }
