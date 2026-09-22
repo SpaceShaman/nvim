@@ -49,5 +49,8 @@ return function()
   map('v', '<C-Down>', "y'<Pgv", opts)
   map('v', '<C-Up>', "y'>pgv", opts)
 
+  map('n', '<leader>c', 'gcc', { desc = 'Toggle comment', remap = true })
+  map('x', '<leader>c', 'gc', { desc = 'Toggle comment', remap = true })
+
   map('n', '-', '<cmd>Oil<CR>', { desc = 'Toggle Oil', noremap = true })
 end
