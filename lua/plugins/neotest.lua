@@ -1,11 +1,11 @@
 return {
   'nvim-neotest/neotest',
-  commit = '72bc8f1ec62a590fb47368c81f89610e0f353e28',
+  commit = '27bf921498043f7ecd821d6db68d05de244bbd02',
   dependencies = {
     { 'nvim-neotest/nvim-nio', commit = '21f5324bfac14e22ba26553caf69ec76ae8a7662' },
     { 'nvim-lua/plenary.nvim', commit = 'b9fd5226c2f76c951fc8ed5923d85e4de065e509' },
     { 'antoinemadec/FixCursorHold.nvim', commit = '1900f89dc17c603eec29960f57c00bd9ae696495' },
-    { 'nvim-treesitter/nvim-treesitter', commit = '6620ae1c44dfa8623b22d0cbf873a9e8d073b849' },
+    { 'nvim-treesitter/nvim-treesitter', commit = 'f603a2f4da48728f80257fb5fbb90145fd1dc173' },
     { 'nvim-neotest/neotest-python', commit = 'b0d3a861bd85689d8ed73f0590c47963a7eb1bf9' },
     { 'marilari88/neotest-vitest', commit = 'f01addc6f07b79ef1be5f4297eafbee9e0959018' },
     -- { dir = '/home/ton618/Dev/neotest-python' },
